@@ -29,18 +29,16 @@ img {
     border-radius: 50%;
 }
 
-/* Add a black background color to the top navigation */
 .topnav {
-		width: 100%;
-		position: fixed;
+	width: 100%;
+	position: fixed;
     background-color: #FFFFFF;
-    overflow: hidden;
-		-webkit-box-shadow: 10px 10px 48px -10px rgba(0,0,0,0.5);
-		-moz-box-shadow: 10px 10px 48px -10px rgba(0,0,0,0.5);
-		box-shadow: 10px 10px 48px -10px rgba(0,0,0,0.5);
+	overflow: hidden;
+	-webkit-box-shadow: 10px 10px 48px -10px rgba(0,0,0,0.5);
+	-moz-box-shadow: 10px 10px 48px -10px rgba(0,0,0,0.5);
+	box-shadow: 10px 10px 48px -10px rgba(0,0,0,0.5);
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
     float: left;
     color: #191953;
@@ -116,7 +114,7 @@ footer {
 	display: inline-block;
 }
 
-.whiteTitle {
+.title_white {
 	font-family: Montserrat;
 	font-size: 30px;
 	text-transform: uppercase;
@@ -167,18 +165,18 @@ footer {
 }
 
 .row {
-		padding: 0px 50px 50px 50px;
+	padding: 0px 50px 50px 50px;
     display: grid;
-		grid-gap: 75px 75px;
+	grid-gap: 75px 75px;
     grid-template-columns: repeat(2, 1fr);
-		background-color: #191953;
+	background-color: #191953;
 }
 
 .column {
-		border-radius: 5px;
+	border-radius: 5px;
     float: left;
     padding: 10px;
-		background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 
 @media (max-width: 900px) {
