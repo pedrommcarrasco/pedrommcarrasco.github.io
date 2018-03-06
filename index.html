@@ -12,15 +12,15 @@
   <body>
     <div class="wrapper">
       <div class="topnav">
-        <a href="#home">About</a>
-        <a href="#news">Personal</a>
-        <a href="#contact">Professional</a>
-        <a href="#about">Contact</a>
+        <a data-scroll href="#about" class="smoothScroll">About</a>
+        <a data-scroll href="#personal" class="smoothScroll">Personal</a>
+        <a data-scroll href="#professional" class="smoothScroll">Professional</a>
+        <a data-scroll href="#contact" class="smoothScroll">Contact</a>
       </div>
 
     <div class="container">
       <div>
-        <div class="contentContainer">
+        <div class="contentContainer" id="about">
           <header>
             <h1 class="name">Pedro Carrasco</h1>
           </header>
@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div class="sectionStyleBlue">
+      <div class="sectionStyleBlue" id="personal">
         <header>
           <h1 class="whiteTitle">Personal Projects</h1>
         </header>
@@ -58,7 +58,7 @@
     </div>
       </div>
 
-      <div class="sectionStyleBlue">
+      <div class="sectionStyleBlue" id="professional">
           <header>
                   <h1 class="whiteTitle">Professional Projects</h1>
                 </header>
@@ -129,5 +129,10 @@
     </footer>
   </div>
   </div>
+
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/smooth-scroll.js"></script>
+  <script src="js/main.js"></script>
+
   </body>
 </html>
