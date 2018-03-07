@@ -188,7 +188,7 @@ footer {
 	background-color: #0d2636;
 }
 
-.rowIcon {
+.row_icon {
     display: grid;
 	grid-auto-flow: column;
 	justify-content: center;
