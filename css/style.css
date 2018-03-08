@@ -183,7 +183,7 @@ footer {
 
 .row {
     display: grid;
-	grid-gap: 75px 75px;
+	grid-gap: 30px 90px;
     grid-template-columns: repeat(2, 1fr);
 	background-color: #0d2636;
 }
@@ -197,16 +197,14 @@ footer {
 .column {
 	border-radius: 5px;
     float: left;
-    padding: 10px;
 	background-color: #FFFFFF;
 	display: grid;
 	flex-direction: column;
 	align-content:space-between;
 }
 
-.p_grid {
-	margin-right: 4em;
-	margin-left: 4em;
+.column-content-wrapper {
+	padding: 0px 20px;
 }
 
 .column_icon {
@@ -216,6 +214,10 @@ footer {
 }
 
 @media (max-width: 900px) {
+	.sectionStyleBlue {
+		padding: 0px 20px 20px 20px;
+	}
+
     .row {
         grid-template-columns: 1fr;
     }
