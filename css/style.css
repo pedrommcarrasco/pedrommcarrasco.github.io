@@ -204,6 +204,11 @@ footer {
 	align-content:space-between;
 }
 
+.p_grid {
+	margin-right: 4em;
+	margin-left: 4em;
+}
+
 .column_icon {
     float: left;
     padding: 10px;
