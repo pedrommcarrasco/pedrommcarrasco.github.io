@@ -213,9 +213,7 @@ footer {
 	display: grid;
 	flex-direction: column;
 	align-content:space-between;
-
-
-	background-image: url(Resources/Projects/rxstarscream.png);
+	
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -228,7 +226,6 @@ footer {
 .column_icon {
     float: left;
     padding: 10px;
-	background-color: #FFFFFF;
 }
 
 @media (max-width: 900px) {
