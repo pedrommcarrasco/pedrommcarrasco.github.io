@@ -188,13 +188,6 @@ footer {
 	}
 }
 
-.meta {
-	text-transform: uppercase;
-	font-family: Arial, Courier New, Source Sans Pro, sans-serif;
-	font-size: 10px;
-	letter-spacing: .15em;
-}
-
 .inline-list {
 	list-style: none;
 	margin: 0;
