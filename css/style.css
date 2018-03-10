@@ -225,11 +225,18 @@ footer {
 		transition: all 250ms ease-out;
 }
 
-.column:hover{
+.column:hover {
 	-webkit-transform: scale(1.05);
         -ms-transform: scale(1.05);
 				transform: scale(1.05);
 				transition: all 250ms ease-in;
+}
+
+.column:active {
+	-webkit-transform: scale(1.05);
+	-ms-transform: scale(1.05);
+	transform: scale(1.05);
+	transition: all 250ms ease-in;
 }
 
 .column-content-wrapper {
@@ -243,6 +250,13 @@ footer {
 }
 
 .column-icon:hover{
+	-webkit-transform: scale(1.10);
+        -ms-transform: scale(1.10);
+				transform: scale(1.10);
+				transition: all 250ms ease-in;
+}
+
+.column-icon:active{
 	-webkit-transform: scale(1.10);
         -ms-transform: scale(1.10);
 				transform: scale(1.10);
