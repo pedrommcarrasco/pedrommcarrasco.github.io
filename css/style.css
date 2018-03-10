@@ -47,11 +47,11 @@ p {
 	height: 50px;
 }
 
-.img-fit {
-	max-width: 100%;
-	max-height: 100%;
+.icon-app {
+	border-radius: 15px;
+	width: 75px; 
+	height: 75px;
 }
-
 
 .topnav {
 	width: 100%;
@@ -159,6 +159,14 @@ footer {
 	color: #0d2636;
 }
 
+.project-title-personal {
+	font-family: Montserrat;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 900;
+	color: #0d2636;
+}
+
 .project-company {
 	font-family: Montserrat;
 	font-size: 15px;
@@ -236,10 +244,23 @@ footer {
 	padding: 0px 20px;
 }
 
+.column-title {
+	float: left;
+	padding: 30px 10px 0px 10px;
+	align-content: center
+}
+
+
 .column-icon {
     float: left;
 		padding: 10px;
 		transition: all 250ms ease-out;
+}
+
+.column-appicon {
+	float: left;
+	padding: 10px;
+	transition: all 250ms ease-out;
 }
 
 .column-icon:hover{
@@ -256,7 +277,17 @@ footer {
 
     .row {
         grid-template-columns: 1fr;
-    }
+		}
+
+		.column-content-wrapper {
+			padding: 0px 10px;
+	}
+}
+
+@media (max-width: 374px) {
+		.column-title {
+			padding: 30px 4px 0px 4px;
+		}		
 }
 
 /*  TIMELINE */
