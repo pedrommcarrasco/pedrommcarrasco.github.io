@@ -221,7 +221,15 @@ footer {
 	
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+		background-size: cover;
+		transition: all 250ms ease-out;
+}
+
+.column:hover{
+	-webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+				transform: scale(1.05);
+				transition: all 250ms ease-in;
 }
 
 .column-content-wrapper {
@@ -230,7 +238,15 @@ footer {
 
 .column-icon {
     float: left;
-    padding: 10px;
+		padding: 10px;
+		transition: all 250ms ease-out;
+}
+
+.column-icon:hover{
+	-webkit-transform: scale(1.10);
+        -ms-transform: scale(1.10);
+				transform: scale(1.10);
+				transition: all 250ms ease-in;
 }
 
 @media (max-width: 900px) {
@@ -370,4 +386,4 @@ footer {
 	  border-width: 8px 16px 8px 0;
 	  border-color: transparent #0d2636 transparent transparent;
 	}
-  }
+}
