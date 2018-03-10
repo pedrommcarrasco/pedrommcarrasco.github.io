@@ -249,13 +249,6 @@ footer {
 				transition: all 250ms ease-in;
 }
 
-.column-icon:active{
-	-webkit-transform: scale(1.10);
-        -ms-transform: scale(1.10);
-				transform: scale(1.10);
-				transition: all 250ms ease-in;
-}
-
 @media (max-width: 900px) {
 	.sectionStyleBlue {
 		padding: 0px 20px 20px 20px;
