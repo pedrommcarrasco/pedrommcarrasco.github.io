@@ -232,13 +232,6 @@ footer {
 				transition: all 250ms ease-in;
 }
 
-.column:active {
-	-webkit-transform: scale(1.05);
-	-ms-transform: scale(1.05);
-	transform: scale(1.05);
-	transition: all 250ms ease-in;
-}
-
 .column-content-wrapper {
 	padding: 0px 20px;
 }
