@@ -12,12 +12,21 @@ body {
     width: device-width;
 }
 
+
 @viewport {
     width: device-width;
 }
 
 body, html {
 	height: 100%;
+}
+
+a {
+	color: #0d2636;
+}
+
+.a-white {
+	color: #FFFFFF;
 }
 
 p {
@@ -172,6 +181,7 @@ footer {
 	font-size: 15px;
 	line-height: 0.25em;
 	color: #0d2636;
+	text-decoration: #0d2636;
 }
 
 .container {
