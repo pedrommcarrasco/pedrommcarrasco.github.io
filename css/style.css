@@ -188,7 +188,6 @@ footer {
 	margin: 0 auto;
 	margin-top: 75px;
 	width: 100%;
-	overflow: auto;
 	text-align: center;
 }
 
@@ -196,7 +195,6 @@ footer {
 	margin: 0 auto;
 	width: 100%;
 	padding: 12px 12px 12px;
-	overflow: auto;
 	text-align: center;
 }
 
