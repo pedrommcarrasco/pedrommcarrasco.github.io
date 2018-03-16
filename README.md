@@ -11,4 +11,4 @@ Welcome to my personal page repository! Keep in mind that I'm an iOS developer a
 - Planning to start writing articles (creating section for it and markdown parser)
 
 ## Feedback
-Any feedback is truly welcome! I'm not english native and so there's always something that can be done in a better different way. I'm also open to design suggestion. You can also submit a Pull Request if you spot some typos or have any design suggestions.
+Any feedback is truly welcome! I'm not english native and so there's might be some mistakes. I'm also open to design suggestion. You can also submit a Pull Request if you spot some typos or have any design suggestions.
