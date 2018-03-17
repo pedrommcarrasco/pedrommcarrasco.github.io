@@ -301,6 +301,7 @@ footer {
 /*  TIMELINE */
 
 .timeline ul {
+	overflow-x: hidden;
 	background: #ffffff;
 	padding: 2px 0;
   }
