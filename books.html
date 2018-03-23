@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115564863-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-115564863-1');
+    </script>
+
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Montserrat" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="slider-pro-master/dist/css/slider-pro.min.css" />
+    <title>Pedro Carrasco</title>
+</head>
+
+
+<body>
+    <div class="wrapper">
+        <div class="topnav">
+            <a data-scroll href="index" class="smoothScroll">Home</a>
+            <a data-scroll href="projects" class="smoothScroll">Projects</a>
+            <a data-scroll href="books" class="smoothScroll">Books</a>
+        </div>
+
+        <div class="container">
+            <div class="sectionStyleBlue">
+                <footer id="contact">
+                    <header>
+                        <h1 class="title-white">Contacts</h1>
+                    </header>
+
+                    <div class="row-icon">
+                        <div class="column-icon">
+                            <a href="mailto:pedrommcarrasco@gmail.com">
+                                <img src="Resources/Logos/mail.png" class="icon">
+                            </a>
+                        </div>
+
+                        <div class="column-icon">
+                            <a href="https://www.linkedin.com/in/pedrommcarrasco/">
+                                <img src="Resources/Logos/linkedin.png" class="icon">
+                            </a>
+                        </div>
+
+                        <div class="column-icon">
+                            <a href="http://www.twitter.com/pedrommcarrasco">
+                                <img src="Resources/Logos/twitter.png" class="icon">
+                            </a>
+                        </div>
+
+                        <div class="column-icon">
+                            <a href="http://www.github.com/pedrommcarrasco">
+                                <img src="Resources/Logos/github-white.png" class="icon">
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="slider-pro-master/dist/js/jquery.sliderPro.min.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <script> 
+        window.sr = ScrollReveal();
+        sr.reveal('#projects');
+        sr.reveal('#contact');
+    </script>
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('#my-slider').sliderPro({
+                width: '100%',
+                arrows: true,
+                waitForLayers: true,
+                fade: false,
+                autoplay: false,
+            });
+        });
+    </script>
+</body>
+
+</html>
