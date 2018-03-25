@@ -114,7 +114,7 @@ p {
 }
 
 article {
-    padding: 12px;
+    margin: 12px;
 }
 
 hr {
@@ -154,7 +154,7 @@ footer {
     font-size: 45px;
     text-transform: uppercase;
     font-weight: 900;
-    padding: 12px;
+    margin: 12px;
     border: 4px solid #0d2636;
     color: #0d2636;
     display: inline-block;
@@ -169,7 +169,7 @@ footer {
     font-size: 30px;
     text-transform: uppercase;
     font-weight: 900;
-    padding: 12px;
+    margin: 12px;
     color: #0d2636;
     display: inline-block;
 }
@@ -179,7 +179,7 @@ footer {
     font-size: 30px;
     text-transform: uppercase;
     font-weight: 900;
-    padding: 12px;
+    margin: 12px;
     color: #FFFFFF;
     display: inline-block;
 }
@@ -190,7 +190,8 @@ footer {
     text-transform: uppercase;
     font-weight: 900;
     line-height: 0.5em;
-    line-height: 20px;
+		line-height: 20px;
+		margin-top: 7px;
     color: #0d2636;
 }
 
@@ -201,7 +202,7 @@ footer {
     font-weight: 900;
     line-height: 0.5em;
     line-height: 20px;
-    padding: 15px 0px 0px 0px;
+    margin: 15px 0px 0px 0px;
     color: #0d2636;
 }
 
@@ -240,7 +241,7 @@ footer {
 .contentContainer {
     margin: 0 auto;
     width: 100%;
-    padding: 12px 12px 12px;
+    margin: 12px 12px 12px;
     text-align: center;
 }
 
@@ -304,34 +305,34 @@ footer {
 }
 
 .column-content-wrapper {
-    padding: 0px 20px;
+    margin: 0px 20px;
 }
 
 .column-content-wrapper-books {
-	padding: 20px 20px;
+	margin: 20px 20px;
 }
 
 .column-title {
     float: left;
-    padding: 30px 10px 0px 10px;
+    margin: 30px 10px 0px;
     align-content: center
 }
 
 .column-book {
     float: left;
-    padding: 0px 5px;
+    margin: 0px 5px;
     align-content: center
 }
 
 .column-icon {
     float: left;
-    padding: 10px;
+    margin: 10px;
     transition: all 250ms ease-out;
 }
 
 .column-appicon {
     float: left;
-    padding: 10px;
+    margin: 10px;
     transition: all 250ms ease-out;
 }
 
@@ -345,19 +346,26 @@ footer {
 @media (max-width: 900px) {
     .sectionStyleBlue {
         padding: 0px 20px 20px 20px;
-    }
+		}
+		
+		.section {
+			padding: 0px 20px 50px 20px;
+		}
+
     .row {
         grid-template-columns: 1fr;
     }
     .column-content-wrapper {
-        padding: 0px 10px;
+        margin: 0px 10px;
     }
 }
 
-@media (max-width: 374px) {
+@media (max-width: 415px) {
     .column-title {
-        padding: 30px 4px 0px;
+        margin: 30px 4px 0px;
 		}
+
+		.section
 		
 		.icon-app {
 			width: 65px;
