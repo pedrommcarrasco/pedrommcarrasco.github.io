@@ -191,7 +191,7 @@ footer {
     font-weight: 900;
     line-height: 0.5em;
 		line-height: 20px;
-		margin-top: 7px;
+		margin-top: 12px;
     color: #0d2636;
 }
 
@@ -217,7 +217,8 @@ footer {
 .project-company {
     font-family: Montserrat;
     font-size: 15px;
-    line-height: 0.25em;
+		line-height: 0.25em;
+		margin-top: -10px;
     color: #0d2636;
     text-decoration: #0d2636;
 }
