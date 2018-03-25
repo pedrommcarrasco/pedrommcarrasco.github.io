@@ -149,7 +149,11 @@
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 
     <script> 
-      window.sr = ScrollReveal();
+    var config = {
+      viewFactor: 0.05
+      }
+
+      window.sr = ScrollReveal(config);
       sr.reveal('#about');
       sr.reveal('#timeline');
       sr.reveal('#contact');
