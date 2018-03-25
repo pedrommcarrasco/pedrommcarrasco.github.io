@@ -356,8 +356,13 @@ footer {
 
 @media (max-width: 374px) {
     .column-title {
-        padding: 30px 4px 0px 4px;
-    }
+        padding: 30px 4px 0px;
+		}
+		
+		.icon-app {
+			width: 65px;
+			height: 65px;
+		}
 }
 
 
