@@ -273,6 +273,13 @@ footer {
     justify-content: center;
 }
 
+.row-bookstate {
+	margin-top: -15px;
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: center;
+}
+
 .column {
     border-radius: 5px;
     float: left;
