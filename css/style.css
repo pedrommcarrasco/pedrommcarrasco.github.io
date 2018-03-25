@@ -222,7 +222,8 @@ footer {
 }
 
 .book-authors {
-    font-family: Montserrat;
+		font-family: Montserrat;
+		margin-top: -15px;
     font-size: 15px;
     line-height: 20px;
     color: #0d2636;
