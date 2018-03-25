@@ -293,53 +293,54 @@
       </div>
     </div>
     <div class="container">
-        <div class="sectionStyleBlue">
-          <footer id="contact">
-            <header>
-              <h1 class="title-white">Contacts</h1>
-            </header>
+      <div class="sectionStyleBlue">
+        <footer id="contact">
+          <header>
+            <h1 class="title-white">Contacts</h1>
+          </header>
 
-            <div class="row-icon">
-              <div class="column-icon">
-                <a href="mailto:pedrommcarrasco@gmail.com">
-                  <img src="Resources/Logos/mail.png" class="icon">
-                </a>
-              </div>
-
-              <div class="column-icon">
-                <a href="https://www.linkedin.com/in/pedrommcarrasco/">
-                  <img src="Resources/Logos/linkedin.png" class="icon">
-                </a>
-              </div>
-
-              <div class="column-icon">
-                <a href="http://www.twitter.com/pedrommcarrasco">
-                  <img src="Resources/Logos/twitter.png" class="icon">
-                </a>
-              </div>
-
-              <div class="column-icon">
-                <a href="http://www.github.com/pedrommcarrasco">
-                  <img src="Resources/Logos/github-white.png" class="icon">
-                </a>
-              </div>
+          <div class="row-icon">
+            <div class="column-icon">
+              <a href="mailto:pedrommcarrasco@gmail.com">
+                <img src="Resources/Logos/mail.png" class="icon">
+              </a>
             </div>
-          </footer>
-        </div>
+
+            <div class="column-icon">
+              <a href="https://www.linkedin.com/in/pedrommcarrasco/">
+                <img src="Resources/Logos/linkedin.png" class="icon">
+              </a>
+            </div>
+
+            <div class="column-icon">
+              <a href="http://www.twitter.com/pedrommcarrasco">
+                <img src="Resources/Logos/twitter.png" class="icon">
+              </a>
+            </div>
+
+            <div class="column-icon">
+              <a href="http://www.github.com/pedrommcarrasco">
+                <img src="Resources/Logos/github-white.png" class="icon">
+              </a>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
+  </div>
 
-    <script src="js/jquery-2.1.4.min.js"></script>
-    <script src="js/smooth-scroll.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/timeline.js"></script>
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/smooth-scroll.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 
-    <script> 
-      window.sr = ScrollReveal();
-      sr.reveal('#projects');
-      sr.reveal('#contact');
-    </script>
+  <script> 
+    var config = { viewFactor: 0.001 }
+    window.sr = ScrollReveal(config);
+    sr.reveal('#projects');
+    sr.reveal('#contact');
+  </script>
 </body>
 
 </html>
