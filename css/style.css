@@ -293,9 +293,9 @@ footer {
     display: grid;
     flex-direction: column;
     align-content: space-between;
-    -webkit-box-shadow: 5px 5px 24px -9px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 5px 5px 24px -9px rgba(0, 0, 0, 0.3);
-    box-shadow: 5px 5px 24px -9px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 8px 36px 12px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 8px 36px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 36px 12px rgba(0, 0, 0, 0.2);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
