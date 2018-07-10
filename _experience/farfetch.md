@@ -14,6 +14,8 @@ I'm currently working in Farfetch in their main application called, internally, 
 
 ## Discover
 
+![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/experience/farfetch/discover_cover.jpg?raw=true)
+
 Discover, how Farfetch's main application is called internally, is a full ecommerce experience in mobile. It's supported in a lot of contries and with so, the attention give to detail and scalability is huge. Bellow you'll be able to see some of the key aspects during my time here.
 
 
