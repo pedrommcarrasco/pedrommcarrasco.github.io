@@ -14,4 +14,22 @@ I'm currently working in Farfetch in their main application called, internally, 
 
 ## Discover
 
-To-do
+Discover, how Farfetch's main application is called internally, is a full ecommerce experience in mobile. It's supported in a lot of contries and with so, the attention give to detail and scalability is huge. Bellow you'll be able to see some of the key aspects during my time here.
+
+
+
+#### Key aspects
+
+* Swift
+
+* Objective-C
+
+* Interoperability
+
+* Unit Testing
+
+* UI Testing
+
+* Snapshot Testing
+
+  
