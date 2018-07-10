@@ -25,7 +25,7 @@ t:
   present: "Present"
 
 google_fonts:
-  - name: "Fira Sans"
+  - name: "Roboto"
     weights: "400,400i,600,600i"
 
 navigation_pages:

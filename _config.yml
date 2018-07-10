@@ -26,8 +26,13 @@ twitter_username: pedrommcarrasco
 github_username: pedrommcarrasco
 logo: /assets/photos/portrait.jpg
 search: true
-search_full_content: false # true, false (default)
+search_full_content: false
 search_provider: lunr
+
+disqus:
+  shortname: pedrommcarrasco
+
+google_analytics: UA-115564863-1
 
 # Build settings
 markdown: kramdown
@@ -62,8 +67,6 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-  - /docs # ignore Basically Basic sample site
-  - /example # ignore Basically Basic dev site
 
 collections:
   experience:
