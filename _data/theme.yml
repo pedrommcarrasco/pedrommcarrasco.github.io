@@ -1,0 +1,33 @@
+# Theme Skin
+skin: default # default, night, plum, sea, soft, steel
+
+# Theme Text
+t:
+  skip_links: "Skip links"
+  skip_primary_nav: "Skip to primary navigation"
+  skip_content: "Skip to content"
+  skip_footer: "Skip to footer"
+  menu: "Menu"
+  search: "Search"
+  site_search: "Site Search"
+  results_found: "Result(s) found"
+  search_placeholder_text: "Enter your search term..."
+  home: "Home"
+  newer: "Newer"
+  older: "Older"
+  email: "Email"
+  subscribe: "Subscribe"
+  read_more: "Read More"
+  posts: "Posts"
+  page: "Page"
+  of: "of"
+  min_read: "min read"
+  present: "Present"
+
+google_fonts:
+  - name: "Fira Sans"
+    weights: "400,400i,600,600i"
+
+navigation_pages:
+  - experience.md
+  - projects.md

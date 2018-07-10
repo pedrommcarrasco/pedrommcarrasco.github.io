@@ -1,0 +1,147 @@
+---
+title: "Constrictor"
+image: 
+  path: /assets/projects/constrictor/cover.jpg
+  thumbnail: /assets/projects/constrictor/logo.jpg
+  caption: ""
+actions:
+  - label: "GitHub"
+    icon: github
+    url: "http://www.github.com/pedrommcarrasco/Constrictor"
+---
+
+***(Boe)*** Constrictor's AutoLayout µFramework with the goal of simplifying your constraints by reducing the amount of code you have to write.
+
+[![Build Status](https://travis-ci.org/pedrommcarrasco/Constrictor.svg?branch=master)](https://travis-ci.org/pedrommcarrasco/Constrictor) 
+[![codecov](https://codecov.io/gh/pedrommcarrasco/Constrictor/branch/master/graph/badge.svg)](https://codecov.io/gh/pedrommcarrasco/Constrictor)
+[![CocoaPods](https://img.shields.io/cocoapods/v/Constrictor.svg)](https://cocoapods.org/pods/Constrictor)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![apm](https://img.shields.io/apm/l/vim-mode.svg)](https://github.com/pedrommcarrasco/Constrictor/blob/master/LICENSE)
+
+
+## Installation 📦 
+
+### CocoaPods
+Constrictor's available through [CocoaPods](https://cocoapods.org/pods/Constrictor). To do so, add the following line to your PodFile:
+
+```swift
+pod 'Constrictor'
+```
+And then run the following command in terminal:
+
+```swift
+pod install
+```
+
+
+### Carthage
+
+Add this to your Cartfile:
+
+```swift
+github "pedrommcarrasco/Constrictor"
+```
+
+And then run the following command in terminal:
+
+```swift
+carthage update
+```
+
+
+## Usage Example ⌨️ 
+
+After installing Constrictor, you should import the framework:
+
+```swift
+import Constrictor
+```
+
+Once imported you can start using Constrictor to apply constraints to your views programmatically.
+
+Bellow, you'll be able to see a working example. First, we start by configuring three simple UIViews (assuming we're in a UIViewController)
+
+```swift
+let redView = UIView()
+redView.backgroundColor = .red
+view.addSubview(redView)
+
+let blueView = UIView()
+blueView.backgroundColor = .blue    
+view.addSubview(blueView)
+
+let greenView = UIView()
+greenView.backgroundColor = .green    
+redView.addSubview(greenView)
+```
+
+Down bellow, you'll see how you apply constraints with and without Constrictor.
+
+
+### How you're *probably* doing it without Constrictor 😰
+
+```swift
+[redView, blueView, greenView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+
+if #available(iOS 11.0, *) {
+let safeArea = view.safeAreaLayoutGuide
+
+  NSLayoutConstraint.activate(
+    [
+      blueView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      blueView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ]
+  ) 
+} else {
+  let safeLayoutGuide = UILayoutGuide()
+  view.addLayoutGuide(safeLayoutGuide)
+
+  NSLayoutConstraint.activate(
+    [
+      safeLayoutGuide.topAnchor.constraint(equalTo: topLayoutGuide),
+      safeLayoutGuide.bottomAnchor.constraint(equalTo: bottomLayoutGuide),
+      safeLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      safeLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+      blueView.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
+      blueView.centerYAnchor.constraint(equalTo: safeLayoutGuide.centerYAnchor)
+    ]
+  ) 
+}
+
+NSLayoutConstraint.activate(
+  [
+    redView.topAnchor.constraint(equalTo: view.topAnchor),
+    redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    redView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+    redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+    blueView.widthAnchor.constraint(equalToConstant: 75.0),
+    blueView.heightAnchor.constraint(equalToConstant: 75.0),
+
+    greenView.widthAnchor.constraint(equalTo: blueView.widthAnchor),
+    greenView.heightAnchor.constraint(equalTo: redView.heightAnchor),
+    greenView.centerYAnchor.constraint(equalTo: blueView.centerYAnchor),
+    greenView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: 50.0)
+  ]
+)
+```
+
+
+### How you can do it with Constrictor 😍
+
+```swift
+redView.constrictEdgesToViewController(self, withinGuides: false)
+
+blueView.constrict(attributes: .width, .height, constant: 75.0)
+  .constrictCenterInViewController(self)
+
+greenView.constrict(to: blueView, attributes: .width, .centerYGuide)
+  .constrictToSuperview(attributes: .height)
+  .constrict(.trailing, to: blueView, attribute: .leading, constant: 50.0)
+```
+
+
+##  Sample Project 📲
+
+There's a sample project in this repository called [Example](https://github.com/pedrommcarrasco/Constrictor/tree/master/Example), if you want to take a look at Constrictor before using it in your projects, feel free to take a look at it and try to apply some constraints with it.
