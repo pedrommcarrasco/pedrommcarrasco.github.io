@@ -7,6 +7,7 @@ actions:
   - label: "GitHub"
     icon: github
     url: "http://www.github.com/rxswiftcommunity/rxstarscream"
+comments: false
 ---
 
 Contributed to the lightweight extension to subscribe Starscream websocket events with RxSwift. I was responsible for the RxSwift 4 and Swift 4 update.

@@ -8,6 +8,7 @@ actions:
   - label: "GitHub"
     icon: github
     url: "http://www.github.com/pedrommcarrasco/Splashy"
+comments: false
 ---
 
 Splashy's a 2D game inspired by FlappyBird. The more rubies you pick in a row, the more momentum you gain and with momentum you'll be able to achieve higher scores.

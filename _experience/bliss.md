@@ -4,6 +4,7 @@ image:
   path: /assets/experience/bliss/cover.jpg
   thumbnail: /assets/experience/bliss/logo.jpg
   caption: ""
+comments: false
 ---
 
 Founded in 2009, Bliss Applications's one of the leaders in software development within Portugal located in Lisbon, Porto and Boston. Bliss Application's part of the WYGroup, the largest portuguese digital marketing group. Bliss works with new and existing businesses from the ideation phase to create products and solutions with quality and tuned design.

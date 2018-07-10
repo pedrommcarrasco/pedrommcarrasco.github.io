@@ -8,6 +8,7 @@ actions:
   - label: "GitHub"
     icon: github
     url: "http://www.github.com/pedrommcarrasco/Constrictor"
+comments: false
 ---
 
 ***(Boe)*** Constrictor's AutoLayout µFramework with the goal of simplifying your constraints by reducing the amount of code you have to write.

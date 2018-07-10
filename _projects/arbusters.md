@@ -8,6 +8,7 @@ actions:
   - label: "GitHub"
     icon: github
     url: "http://www.github.com/pedrommcarrasco/ARbusters"
+comments: false
 ---
 
 ARbusters is an augmented reality game in a pixel/billboard style. The gameplay is pretty simple, look around you and kill every enemy under the lowest time possible!
