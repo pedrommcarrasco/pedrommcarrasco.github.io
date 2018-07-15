@@ -1,12 +1,12 @@
 ---
+title: "Power-up your anchors"
+categories:
+- UI
+tags:
+- Auto Layout
+- Constraint
+- Anchor
 layout: post
-author:
-    name: Pedro Carrasco
-    twitter: pedrommcarrasco
-actions: 
-    - label: "Source code"
-    icon: github
-    url: "https://www.github.com/pedrommcarrasco"
 ---
 
 NSLayoutAnchor was first introduced by Apple in iOS 9.0 and it's described as a *"factory class for creating layout constraint objects using a fluent API"*.  Apple's documentation also refers that `NSLayoutAnchor` usage is preferred when compared to `NSLayoutConstraint`, *"use these constraints to programmatically define your layout using Auto Layout. Instead of creating `NSLayoutConstraint` ..."*, due to type checking and having a simple and cleaner interface when compared to NSLayoutConstraint.
