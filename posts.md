@@ -1,0 +1,7 @@
+---
+title: Articles
+layout: posts
+permalink: /articles/
+collection: posts
+entries_layout: grid
+---
