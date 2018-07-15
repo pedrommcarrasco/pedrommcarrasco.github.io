@@ -6,4 +6,4 @@ collection: posts
 entries_layout: list
 ---
 
-Guides, tips and others.
+Guides, tips and others. :)
