@@ -137,9 +137,9 @@ Setting `isActive`in every single anchor is painful and even though `NSLayoutCon
 @objc extension NSLayoutAnchor {
 
   @discardableResult 
-  func constraint(equalTo anchor: NSLayoutAnchor, 
-                  constant: CGFloat = 0.0, 
-                  isActive = true) -> NSLayoutConstraint {
+  func constrain(equalTo anchor: NSLayoutAnchor, 
+                 constant: CGFloat = 0.0, 
+                 isActive = true) -> NSLayoutConstraint {
 
     let constraint = self.constraint(equalTo: anchor, constant: constant)
     constraint.isActive = isActive
@@ -184,15 +184,15 @@ a.addSubviews(b)
 // Constant set by default as 0.0
 // isActive set by default as true
 // returned constraint discarded
-b.topAnchor.constraint(equalTo: a.topAnchor)
+b.topAnchor.constrain(equalTo: a.topAnchor)
 
 // isActive set by default as true
 // returned constraint discarded
-b.bottomAnchor.constraint(equalTo: a.bottomAnchor, constant: 10.0)
+b.bottomAnchor.constrain(equalTo: a.bottomAnchor, constant: 10.0)
 
 // Constant set by default as 0.0
 // returned constraint is stored in a local variable
-let bLeading = b.leadingAnchor.constraint(equalTo: a.leadingAnchor, isActive = false)
+let bLeading = b.leadingAnchor.constrain(equalTo: a.leadingAnchor, isActive = false)
 
 ```
 
@@ -215,10 +215,10 @@ While Apple solves the problem, it would require two more functions with almost 
 @objc extension NSLayoutAnchor {
 
   @discardableResult 
-  func constraint(_ relation: NSLayoutRelation = .equal, 
-                  to anchor: NSLayoutAnchor, 
-                  constant: CGFloat = 0.0, 
-                  isActive = true) -> NSLayoutConstraint {
+  func constrain(_ relation: NSLayoutRelation = .equal, 
+                 to anchor: NSLayoutAnchor, 
+                 constant: CGFloat = 0.0, 
+                 isActive = true) -> NSLayoutConstraint {
 
     let constraint: NSLayoutConstraint
 
@@ -248,20 +248,20 @@ let b = UIView()
 a.addSubviews(b)
 
 // Constraint set as equal to a.topAnchor
-b.topAnchor.constraint(a.topAnchor)
+b.topAnchor.constrain(a.topAnchor)
 
 // Constraint set as greater than or equal to a.bottomAnchor
-b.bottomAnchor.constraint(.greaterThanOrEqual, to: a.bottomAnchor)
+b.bottomAnchor.constrain(.greaterThanOrEqual, to: a.bottomAnchor)
 
 // Constraint set as less than or equal to a.bottomAnchor
-b.leadingAnchor.constraint(.lessThanOrEqual, to: a.leadingAnchor)
+b.leadingAnchor.constrain(.lessThanOrEqual, to: a.leadingAnchor)
 
 ```
 
 If you compile, it'll work but what if we try to apply a width constraint based on a constant. Add the next line of code to your test function and compile again.
 
 ```swift
-b.widthAnchor.constraint(constant: 50.0)
+b.widthAnchor.constrain(constant: 50.0)
 ```
 
 Oh no, another error... But this time it's pretty easy to understands what's happening. Currently, our function is always expecting us to send a `NSLayoutAnchor` and it doesn't have a default parameter. To solve this, these would be the two most obvious solutions:
