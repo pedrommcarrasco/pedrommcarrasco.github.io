@@ -68,7 +68,7 @@ Just by looking at this example, we're able to identify the following constraint
 * Setting `UILayoutPriority` via parameter is not supported and requires you to create a variable.
 * Interoperability is a major problem of `NSLayoutAnchor` because it doesn't allow it to take advantage of some Swift's features.
 
-Also, setting multipliers is disabled, except for `NSLayoutDimension`'s anchors and in Interface Builder. Due to this limitations and some others, I've created my own Auto Layout µFramework called Constrictor, but this article isn't about convincing you to use a whole new DSL or external dependency for Auto Layout but instead help you power-up your anchors so you can reduce the amount of code you have to write, because the best code is the code you don't have to write, so let's get our hands dirty!
+Also, setting multipliers is disabled, except for `NSLayoutDimension`'s anchors and in Interface Builder. Due to these limitations and some others, I've created my own Auto Layout µFramework called Constrictor, but this article isn't about convincing you to use a whole new DSL or external dependency for Auto Layout but instead help you power-up your anchors so you can reduce the amount of code you have to write, because the best code is the code you don't have to write, so let's get our hands dirty!
 
 Keep in mind that the following improvements will only work with Swift, so in case you have interoperability in your project, while the same logic can be applied, it would required changes.
 
@@ -265,7 +265,7 @@ If you compile, it'll work but what if we try to apply a width constraint based 
 b.widthAnchor.constrain(constant: 50.0)
 ```
 
-Oh no, another error... But this time it's pretty easy to understands what's happening. Currently, our function is always expecting us to send a `NSLayoutAnchor` and it doesn't have a default parameter. To solve this, these would be the two most obvious solutions:
+Oh no, another error... But this time it's pretty easy to understand what's happening. Currently, our function is always expecting us to send a `NSLayoutAnchor` and it doesn't have a default parameter. To solve this, these would be the two most obvious solutions:
 
 * Set the expecting anchor as an optional, `NSLayoutAnchor?`
 * Provide a default parameter
@@ -407,13 +407,13 @@ extension NSLayoutDimension {
 }
 ```
 
-Looking even beter now that it is updated, but it's time to move to another  `NSLayoutConstraint` 's property.
+Looking even better now that it is updated, but it's time to move to another  `NSLayoutConstraint` 's property.
 
 ## Multipliers
 
 Nowadays, apart from `NSLayoutDimension`'s anchors and "SystemSpecific"'s functions, anchors don't support setting a multiplier value, however, it is possible to do it in Interface Builder. Considering this and since we're powering up our anchor's interface, we'll also allow them to have their truly deserved multiplier!
 
-As mentioned above, `NSLayoutConstraint` has a `multiplier` property, the bad news is, it's  read-only, however, let's take a look at its initializer.
+As mentioned above, `NSLayoutConstraint` has a `multiplier` property, the bad news is, it's read-only, however, let's take a look at its initializer.
 
 ```swift
 init(item: Any, attribute: NSLayoutAttribute, relatedBy: NSLayoutRelation, toItem: Any?, attribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat)

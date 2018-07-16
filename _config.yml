@@ -75,6 +75,9 @@ collections:
   projects:
     output: true
     permalink: /:collection/:path/
+  posts:
+    output: true
+    permalink: /:collection/:path/
 
 # Front Matter Defaults
 defaults:
