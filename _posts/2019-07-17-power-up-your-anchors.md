@@ -22,7 +22,7 @@ NSLayoutAnchor was first introduced by Apple in iOS 9.0 and it's described as a 
 
 This means you can never constrain anchors between the different types shown above. But, you can still mess it up, as Apple states:
 
-*"While the `NSLayoutAnchor` class provides additional type checking, it is still possible to create invalid constraints, For example, the compiler allows you to constrain one view's `leadingAnchor` with another view's `leftAnchor`, since they are both `NSLayoutXAxisAnchor` instances. However, Auto Layout does not allow constraints that mix leading and trailing attributes with left or right attributes"*
+*"While the `NSLayoutAnchor` class provides additional type checking, it is still possible to create invalid constraints. For example, the compiler allows you to constrain one view's `leadingAnchor` with another view's `leftAnchor`, since they are both `NSLayoutXAxisAnchor` instances. However, Auto Layout does not allow constraints that mix leading and trailing attributes with left or right attributes"*
 
 ## Current State
 
@@ -96,7 +96,7 @@ extension UIView {
 }
 ```
 
-This function is going to add all `UIView `as its subviews and set each one's  `translatesAutoresizingMaskIntoConstraints`to false. In the end, we'll reduce our code to add subviews and set `translatesAutoresizingMaskIntoConstraints` to the following.
+This function is going to add all `UIView `as its subviews and set each one's  `translatesAutoresizingMaskIntoConstraints` to false. In the end, we'll reduce our code to add subviews and set `translatesAutoresizingMaskIntoConstraints` to the following.
 
 ```swift
 // Add Subviews & Sets translatesAutoresizingMaskIntoConstraints to false
@@ -122,17 +122,17 @@ Try to compile this and you will get the error shown in the image below.
 
 ![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/power-up-your-anchors/objcerror.png?raw=true)
 
-In the past, we would be forced to extend each of `NSLayoutAnchor`'s subclasses but since Swift 4 we are able to solve this by just adding `@objc`' to our extension.
+In the past, we would be forced to extend each of `NSLayoutAnchor`'s subclasses but since Swift 4 we are able to solve this by just adding `@objc` to our extension.
 
 ```swift
 @objc extension NSLayoutAnchor
 ```
 
-And now, if you try to compile, you'll notice that our error is gone for good and with this, our extension is now ready to have some code inside
+And now, if you try to compile, you'll notice that our error is gone for good and with this, our extension is now ready to have some code inside.
 
 ## Activate your constraints!
 
-Setting `isActive`in every single anchor is painful and even though `NSLayoutConstraint.activate([NSLayoutConstraint])` might be considered a better option, it still adds a lot of indentation to our code. But, what if `isActive` would be set by default as true instead of false? Let's try to achieve that with the following code.
+Setting `isActive` in every single anchor is painful and even though `NSLayoutConstraint.activate([NSLayoutConstraint])` might be considered a better option, it still adds a lot of indentation to our code. But, what if `isActive` would be set by default as true instead of false? Let's try to achieve that with the following code.
 
 ```swift
 @objc extension NSLayoutAnchor {
@@ -172,7 +172,7 @@ extension String {
 }
 ```
 
-Compile it and you'll notice that you've got a warning in your `nonDiscardable()`'s function call because you aren't using the value returned. Also, notice that the `discardable()`'s call surprisingly doesn't have any warning. That's exactly what  `@discardableResult` does, it tells the compiler that it shouldn't worry if we're discarding, by not using or storing, the object returned. Now that you know everything about `@discardableResult`let's move back to our Auto Layout function.
+Compile it and you'll notice that you've got a warning in your `nonDiscardable()` function call because you aren't using the value returned. Also, notice that the `discardable()` call surprisingly doesn't have any warning. That's exactly what  `@discardableResult` does, it tells the compiler that it shouldn't worry if we're discarding, by not using or storing the object returned. Now that you know everything about `@discardableResult`let's move back to our Auto Layout function.
 
 So, if we wanted to use our function it would look like this.
 
