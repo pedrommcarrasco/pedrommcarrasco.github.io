@@ -593,13 +593,13 @@ Everything is now ready and set for a small recap of what we've done.
 Right at the start of this article, we've spotted some problems related to anchors and we can proudly check that we've developed solutions to each one of them.
 
 - Having to set `translatesAutoresizingMaskIntoConstraints` to false for every view that isn't loaded from a NIB
-  - [x] We've created a new addSubviews function that supports sending multiple `UIView`.
+  - We've created a new addSubviews function that supports sending multiple `UIView`.
 - Activating constraints by setting its property `isActive` to true, or using `NSLayoutConstraint.activate()`
 - Setting `UILayoutPriority` via parameter is not supported and requires you to create a variable.
 - Setting multipliers is disabled except for `NSLayoutDimension`'s anchors and in Interface Builder.'
-  - [x] Our extensions work together to solve these three problems.
+  - Our extensions work together to solve these three problems.
 - Interoperability is a major problem of `NSLayoutAnchor` because it doesn't allow it to take advantage of some Swift's features.
-  - [x] We've reduced the number of functions needed with an enum based approach and we've adopted default parameters in our functions.
+  - We've reduced the number of functions needed with an enum based approach and we've adopted default parameters in our functions.
 
 Everything is looking good on paper, however, we still need to try out our work.
 
@@ -691,6 +691,6 @@ And this is going to be your homework, or in case it is requested, it might be c
 
 If you've managed to fully read this and reach this ending chapter, I would like to thank you for being with me on this journey through anchors! 
 
-This is my first article so feel free to give me feedback on [Twitter][https://twitter.com/pedrommcarrasco] or here with Disqus. If you find this article helpful feel free to share.
+This is my first article so feel free to give me feedback on [Twitter](https://twitter.com/pedrommcarrasco) or here with Disqus. If you find this article helpful feel free to share.
 
-The source code is available at Github [here][https://github.com/pedrommcarrasco].
+The source code is available at Github [here](https://github.com/pedrommcarrasco).
