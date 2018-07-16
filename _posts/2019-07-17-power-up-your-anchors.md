@@ -128,7 +128,7 @@ In the past, we would be forced to extend each of `NSLayoutAnchor`'s subclasses 
 @objc extension NSLayoutAnchor
 ```
 
-And now, if you try to compile, you'll notice that our error is gone for good. Our extension is now ready to have some code inside and that's exactly what we're going to do now.
+And now, if you try to compile, you'll notice that our error is gone for good and with this, our extension is now ready to have some code inside
 
 ## Activate your constraints!
 
@@ -265,7 +265,11 @@ If you compile, it'll work but what if we try to apply a width constraint based 
 b.widthAnchor.constrain(constant: 50.0)
 ```
 
-Oh no, another error... But this time it's pretty easy to understand what's happening. Currently, our function is always expecting us to send a `NSLayoutAnchor` and it doesn't have a default parameter. To solve this, these would be the two most obvious solutions:
+Oh no, another error... 
+
+![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/power-up-your-anchors/missingfunction.png?raw=true)
+
+But this time it's pretty easy to understand what's happening. Currently, our function is always expecting us to send a `NSLayoutAnchor` and it doesn't have a default parameter. To solve this, these would be the two most obvious solutions:
 
 * Set the expecting anchor as an optional, `NSLayoutAnchor?`
 * Provide a default parameter
@@ -504,7 +508,7 @@ extension NSLayoutDimension {
 }
 ```
 
-We're getting near the end, but if you take a closer look at our current solution you'll notice that we're setting constraint's `multiplier`, `priority` and `isActive` and its code is being repeated in both functions.
+We're getting closer to the end, but if you take a closer look at our current solution you'll notice that we're setting constraint's `multiplier`, `priority` and `isActive` and its code is being repeated in both functions.
 
 ## DRY
 
@@ -530,7 +534,7 @@ func set(multiplier: CGFloat, priority: UILayoutPriority, isActive: Bool) -> NSL
   return constraint
 }
 ```
-And now we invoke our new function instead of setting it locally.
+And now we invoke our new function instead of setting those properties.
 
 ```swift
 @objc extension NSLayoutAnchor {
@@ -586,8 +590,6 @@ extension NSLayoutDimension {
    }
 }
 ```
-
-Everything is now ready and set for a small recap of what we've done.
 
 ## What have we done?
 
