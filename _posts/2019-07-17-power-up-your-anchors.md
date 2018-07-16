@@ -1,7 +1,7 @@
 ---
 title: "Power-up your anchors"
 categories:
-- UI
+- User Interface
 tags:
 - Auto Layout
 - Constraint
@@ -19,15 +19,13 @@ NSLayoutAnchor was first introduced by Apple in iOS 9.0 and it's described as a 
 
 "*You never use the `NSLayoutAnchor` class directly. Instead, use one of its subclasses, based on the type of constraint you wish to create*". 
 
-This means you can never constrain anchors between the different subclasses shown above. But, you can still mess it up, as Apple states:
+This means you can never constrain anchors between the different types shown above. But, you can still mess it up, as Apple states:
 
 *"While the `NSLayoutAnchor` class provides additional type checking, it is still possible to create invalid constraints, For example, the compiler allows you to constrain one view's `leadingAnchor` with another view's `leftAnchor`, since they are both `NSLayoutXAxisAnchor` instances. However, Auto Layout does not allow constraints that mix leading and trailing attributes with left or right attributes"*
 
-** INSERT SOME TEXT HERE **
-
 ## Current State
 
-Let's take a look at an Auto Layout implementation with `NSLayoutAnchor` to see if we can spot some of its boilerplate code.
+It is time to take a look at an Auto Layout implementation with `NSLayoutAnchor` to see if we can spot some of its problems.
 
 ```swift
 // Subviews
@@ -62,15 +60,14 @@ welcomeLabel.leadingAnchor.constraint(equalTo: dismissButton.leadingAnchor).isAc
 welcomeLabel.trailingAnchor.constraint(equalTo: dismissButton.trailingAnchor).isActive = true
 ```
 
-I've spotted four problems related to `NSLayoutAnchor` and one problem related to Auto Layout:
+Just by looking at this example, we're able to identify the following constraints:
 
 * Having to set `translatesAutoresizingMaskIntoConstraints` to false for every view that isn't loaded from a NIB
 * Activating constraints by setting its property `isActive` to true, or using `NSLayoutConstraint.activate()`
 * Setting `UILayoutPriority` via parameter is not supported and requires you to create a variable.
-* Setting multipliers is disabled except for `NSLayoutDimension`'s anchors and in Interface Builder.
 * Interoperability is a major problem of `NSLayoutAnchor` because it doesn't allow it to take advantage of some Swift's features.
 
-Also, in my opinion, `NSLayoutAnchor`'s syntax is too verbose and that's why I've created my own Auto Layout µFramework called Constrictor, but this post isn't about convincing you to use a whole new DSL or external dependency for Auto Layout but instead help you power-up your anchors so you can reduce the amount of code you have to write, because the best code is the code you don't have to write, so let's get our hands dirty!
+Also, setting multipliers is disabled, except for `NSLayoutDimension`'s anchors and in Interface Builder. Due to this limitations and some others, I've created my own Auto Layout µFramework called Constrictor, but this article isn't about convincing you to use a whole new DSL or external dependency for Auto Layout but instead help you power-up your anchors so you can reduce the amount of code you have to write, because the best code is the code you don't have to write, so let's get our hands dirty!
 
 Keep in mind that the following improvements will only work with Swift, so in case you have interoperability in your project, while the same logic can be applied, it would required changes.
 
@@ -89,41 +86,39 @@ To solve this we're going to create a `UIView` extension with the following code
 ```swift
 extension UIView {
 
-func addSubviews(_ subviews: UIView ...) {
+  func addSubviews(_ subviews: UIView ...) {
 
-subviews.forEach {
-self.addSubview($0)
-$0.translatesAutoresizingMaskIntoConstraints = false
-}
-}
+    subviews.forEach {
+      self.addSubview($0)
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+  }
 }
 ```
 
-With the function above, we'll be able to send multiple subviews at once due to its only parameter expecting a variadic amount of `UIView` in the function's declaration. This function is going to add all `UIView `as its subviews and set each one's  `translatesAutoresizingMaskIntoConstraints`to false.
-
-In the end, we'll reduce the amount of code needed to add subviews and set `translatesAutoresizingMaskIntoConstraints`to false with the following.
+This function is going to add all `UIView `as its subviews and set each one's  `translatesAutoresizingMaskIntoConstraints`to false. In the end, we'll reduce our code to add subviews and set `translatesAutoresizingMaskIntoConstraints` to the following.
 
 ```swift
 // Add Subviews & Sets translatesAutoresizingMaskIntoConstraints to false
 self.addSubviews(logoImageView, welcomeLabel, dismissButton)
 ```
-There's a minor downside here, it introduces a side effect to the addSubview process, one way to make this clearer would be changing the function's name to reflect that but that's up to you.
+There's a minor downside here, it introduces a side effect to the add subviews's process, one way to make this clearer would be changing the function's name to reflect it but that's up to you.
 
 ## What about the other problems?
 
-We've now dealt with setting `translatesAutoresizingMaskIntoConstraints`to false by default and now we're going to start working in the remaining problems. To solve them, while there are hundreds of possible solutions, in this article we are going to extend `NSLayoutAnchor`. With this, we'll also leverage some Swift features and decrease how verbose anchors can be.
+We've now dealt with setting `translatesAutoresizingMaskIntoConstraints`to false and now we're going to start working in the remaining problems. To solve them, while there are hundreds of possible solutions, in this article we are going to extend `NSLayoutAnchor`. With this, we'll also leverage some Swift features and decrease how verbose and static the current functions are.
 
-So now that we know what we want, let's start by extending `NSLayoutAnchor` as follows.
+Now that we know what we want, let's start by extending `NSLayoutAnchor` as follows.
 
 ```swift
 extension NSLayoutAnchor {
 
-func test() {}
+  func test() {}
 
 }
 ```
 
-Now try to compile this. Wait, what? Looks like we got the error shown in the image below.
+Try to compile this and you will get the error shown in the image below.
 
 **(IMAGEM COM ERRO)**
 
@@ -137,51 +132,49 @@ And now, if you try to compile, you'll notice that our error is gone for good. O
 
 ## Activate your constraints!
 
-Setting `isActive`in every single anchor is painful and even though `NSLayoutConstraint.activate()` might be considered a better option, it still adds a lot of indentation to our code. What if `isActive` would be set by default as true instead of false? Let's try it with the following code.
+Setting `isActive`in every single anchor is painful and even though `NSLayoutConstraint.activate([NSLayoutConstraint])` might be considered a better option, it still adds a lot of indentation to our code. But, what if `isActive` would be set by default as true instead of false? Let's try to achieve that with the following code.
 
 ```swift
 @objc extension NSLayoutAnchor {
 
-@discardableResult 
-func constraint(equalTo anchor: NSLayoutAnchor, 
-constant: CGFloat = 0.0, 
-isActive = true) -> NSLayoutConstraint {
+  @discardableResult 
+  func constraint(equalTo anchor: NSLayoutAnchor, 
+                  constant: CGFloat = 0.0, 
+                  isActive = true) -> NSLayoutConstraint {
 
-let constraint = self.constraint(equalTo: anchor, constant: constant)
-constraint.isActive = isActive
-return constraint
-}
+    let constraint = self.constraint(equalTo: anchor, constant: constant)
+    constraint.isActive = isActive
+    return constraint
+  }
 }
 ```
 
-Damn, I bet you're pretty tired of writing code by now, but don't worry because we finally have some progress! But before showing you that, let's check what we've done here.
-
-First, we've decided to put up to use a Swift capability called default parameters. This means that we can call this function without providing a value for the parameter `isActive` and in this scenario, its value will always be true, which is exactly what want, but in case you need a constraint that's not immediately active, you can always send false to this parameter.
+We've decided to put up to use a Swift capability called default parameters. This means that we can call this function without providing a value for the `isActive`'s parameter and in this case, its value will always be true, but in case you need a constraint that's not immediately active, you can always send false to this parameter.
 
 Then, while we tell our lovely machine that our function must return a `NSLayoutConstraint` we also say that this function's return is a `@discardableResult`. In case you never heard about it, here is a short sample that will allow you to understand what it does.
 
 ```swift
 extension String {
 
-func test() {   
-self.discardable()
-self.nonDiscardable()
-}
+  func test() {   
+    self.discardable()
+    self.nonDiscardable()
+  }
 
-@discardableResult
-func discardable() -> String {
-return ""
-}
+  @discardableResult
+  func discardable() -> String {
+    return ""
+  }
 
-func nonDiscardable() -> String {
-return ""
-}
+  func nonDiscardable() -> String {
+    return ""
+  }
 }
 ```
 
-If you compile the code above, you'll notice that you've got a warning in your `nonDiscardable()` call because you aren't using the value returned from the function. Also, notice that the `discardable()` call surprisingly doesn't have any warning. Want to know why? Because that's exactly what  `@discardableResult` does. It tells the compiler that it shouldn't worry if we're discarding by not using or storing the object returned. Now that you know everything about `@discardableResult`let's move back to our Auto Layout function.
+Compile it and you'll notice that you've got a warning in your `nonDiscardable()`'s function call because you aren't using the value returned. Also, notice that the `discardable()`'s call surprisingly doesn't have any warning. That's exactly what  `@discardableResult` does, it tells the compiler that it shouldn't worry if we're discarding, by not using or storing, the object returned. Now that you know everything about `@discardableResult`let's move back to our Auto Layout function.
 
-So if we wanted to use our function now it would look like this (keep in mind these constraints aren't supposed to work, instead they'll be only used to showcase our new interface).
+So, if we wanted to use our function it would look like this.
 
 ```swift
 let a = UIView()
@@ -204,7 +197,7 @@ let bLeading = b.leadingAnchor.constraint(equalTo: a.leadingAnchor, isActive = f
 
 ```
 
-Hooray! Looks like we've solved our little constraint's activation problem but we're still missing an important aspect. Our function only supports a relation of `equalTo` when it should also support `greaterThanOrEqualTo` and `lessThanOrEqualTo``.
+It looks like we've solved our little constraint's activation problem but we're still missing an important aspect. Our function only supports a relation of `equalTo` when it should also support `greaterThanOrEqualTo` and `lessThanOrEqualTo`.
 
 ## Too many functions!
 
@@ -217,34 +210,34 @@ To tackle this problem let's first take a look at how Apple solves it. According
 * `func constraint(lessThanOrEqualTo: NSLayoutAnchor) -> NSLayoutConstraint`
 * `func constraint(lessThanOrEqualTo: NSLayoutAnchor, constant: CGFloat) -> NSLayoutConstraint`
 
-While Apple's solution solves the problem, it looks too verbose and it requires two more functions with almost the same logic as the one we've already created. So let's try a different approach enumeration based approach with `NSLayoutRelation`.
+While Apple solves the problem, it would require two more functions with almost the same logic as the one we've already created. So let's try an enumeration based approach with `NSLayoutRelation`.
 
 ```swift
 @objc extension NSLayoutAnchor {
 
-@discardableResult 
-func constraint(_ relation: NSLayoutRelation = .equal, 
-to anchor: NSLayoutAnchor, 
-constant: CGFloat = 0.0, 
-isActive = true) -> NSLayoutConstraint {
+  @discardableResult 
+  func constraint(_ relation: NSLayoutRelation = .equal, 
+                  to anchor: NSLayoutAnchor, 
+                  constant: CGFloat = 0.0, 
+                  isActive = true) -> NSLayoutConstraint {
 
-let constraint: NSLayoutConstraint
+    let constraint: NSLayoutConstraint
 
-switch relation {
-case .equal:
-constraint = self.constraint(equalTo: anchor, constant: constant)
+    switch relation {
+      case .equal:
+        constraint = self.constraint(equalTo: anchor, constant: constant)
 
-case .greaterThanOrEqual:
-constraint = self.constraint(greaterThanOrEqualTo: anchor, constant: constant)
+      case .greaterThanOrEqual:
+        constraint = self.constraint(greaterThanOrEqualTo: anchor, constant: constant)
 
-case .lessThanOrEqual:
-constraint = self.constraint(lessThanOrEqualTo: anchor, constant: constant)
-}
+      case .lessThanOrEqual:
+        constraint = self.constraint(lessThanOrEqualTo: anchor, constant: constant)
+    }
 
-let constraint = self.constraint(equalTo: anchor, constant: constant)
-constraint.isActive = isActive
-return constraint
-}
+    let constraint = self.constraint(equalTo: anchor, constant: constant)
+    constraint.isActive = isActive
+    return constraint
+  }
 }
 ```
 If we now try to use our function, it would work like the following.
