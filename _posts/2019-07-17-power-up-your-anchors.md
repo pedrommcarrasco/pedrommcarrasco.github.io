@@ -25,7 +25,7 @@ This means you can never constrain anchors between the different subclasses show
 
 ** INSERT SOME TEXT HERE **
 
-### Current State
+## Current State
 
 Let's take a look at an Auto Layout implementation with `NSLayoutAnchor` to see if we can spot some of its boilerplate code.
 
@@ -74,7 +74,7 @@ Also, in my opinion, `NSLayoutAnchor`'s syntax is too verbose and that's why I'v
 
 Keep in mind that the following improvements will only work with Swift, so in case you have interoperability in your project, while the same logic can be applied, it would required changes.
 
-### TranslatesAutor... Yes, that long property you always set to false
+## TranslatesAutor... Yes, that long property you always set to false
 
 Here lies the first problem we've spotted and Apple is clear in why you have to do this.
 
@@ -101,26 +101,15 @@ $0.translatesAutoresizingMaskIntoConstraints = false
 
 With the function above, we'll be able to send multiple subviews at once due to its only parameter expecting a variadic amount of `UIView` in the function's declaration. This function is going to add all `UIView `as its subviews and set each one's  `translatesAutoresizingMaskIntoConstraints`to false.
 
-In the end, we'll reduce the amount of code needed to add subviews and set `translatesAutoresizingMaskIntoConstraints`to false from:
-
-```swift
-// Add Subviews
-self.addSubview(logoImageView)
-self.addSubview(welcomeLabel)
-self.addSubview(dismissButton)
-
-// Set view's translatesAutoresizingMaskIntoConstraints to false
-[logoImageView, welcomeLabel, dismissButton].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-```
-
-To:
+In the end, we'll reduce the amount of code needed to add subviews and set `translatesAutoresizingMaskIntoConstraints`to false with the following.
 
 ```swift
 // Add Subviews & Sets translatesAutoresizingMaskIntoConstraints to false
 self.addSubviews(logoImageView, welcomeLabel, dismissButton)
 ```
+There's a minor downside here, it introduces a side effect to the addSubview process, one way to make this clearer would be changing the function's name to reflect that but that's up to you.
 
-### What about the other problems?
+## What about the other problems?
 
 We've now dealt with setting `translatesAutoresizingMaskIntoConstraints`to false by default and now we're going to start working in the remaining problems. To solve them, while there are hundreds of possible solutions, in this article we are going to extend `NSLayoutAnchor`. With this, we'll also leverage some Swift features and decrease how verbose anchors can be.
 
@@ -146,7 +135,7 @@ In the past, we would be forced to extend each of `NSLayoutAnchor`'s subclasses 
 
 And now, if you try to compile, you'll notice that our error is gone for good. Our extension is now ready to have some code inside and that's exactly what we're going to do now.
 
-### Activate your constraints!
+## Activate your constraints!
 
 Setting `isActive`in every single anchor is painful and even though `NSLayoutConstraint.activate()` might be considered a better option, it still adds a lot of indentation to our code. What if `isActive` would be set by default as true instead of false? Let's try it with the following code.
 
@@ -217,7 +206,7 @@ let bLeading = b.leadingAnchor.constraint(equalTo: a.leadingAnchor, isActive = f
 
 Hooray! Looks like we've solved our little constraint's activation problem but we're still missing an important aspect. Our function only supports a relation of `equalTo` when it should also support `greaterThanOrEqualTo` and `lessThanOrEqualTo``.
 
-### Too many functions!
+## Too many functions!
 
 To tackle this problem let's first take a look at how Apple solves it. According to Apple's documentation, `NSLayoutAnchor`exposes 6 different functions, being:
 
@@ -329,7 +318,7 @@ return constraint
 
 And now we're finally able to do apply width and height constraints without any kind of relation to another anchor.  As you might also verify, this function is only available to `NSLayoutDimension`'s anchors, as it should, because we extended `NSLayoutDimension`instead of `NSLayoutAnchor`.
 
-### Priorities
+## Priorities
 
 We're now going to ease the use of priorities with anchors. In the current state, to set a constraint's priority (with anchors) you would need to do following.
 
@@ -428,7 +417,7 @@ return constraint
 
 Looking good so far, but now it's time to move to another  `NSLayoutConstraint` 's property.
 
-### Multipliers
+## Multipliers
 
 Nowadays, apart from `NSLayoutDimension`'s anchors and "SystemSpecific"'s functions', anchors don't support setting a multiplier value, however, it is possible to do it in Interface Builder. So, since we're powering up our anchor's interface, we'll also allow them to have their truly deserved multiplier!
 
@@ -525,7 +514,7 @@ return constraint
 
 We're getting closer to the end, but if you take a closer look at our current solution you'll notice that we're setting constraint's `multiplier`, `priority` and `isActive` in both functions and so we're actually repeating ourselves. 
 
-### DRY
+## DRY
 
 DRY stands for "Don't repeat yourself" and it is often seen as a golden rule in programming. So what are we waiting for? 
 
@@ -609,7 +598,7 @@ return constraint.set(multiplier: multiplier, priority: priority, isActive: isAc
 
 Everything is now ready and set for a small recap of what we've done.
 
-### What have we done?
+## What have we done?
 
 Right at the start of this article, we've spotted some problems related to anchors and we can proudly check that we've developed solutions to each one of them.
 
@@ -624,7 +613,7 @@ Right at the start of this article, we've spotted some problems related to ancho
 
 Everything is looking good on paper, however, we still need to test our work.
 
-### How does it look?
+## How does it look?
 
 To showcase our powered-up anchors, let's take a look at the first example we saw right at the start of this article.
 
@@ -694,7 +683,7 @@ welcomeLabel.trailingAnchor.constrain(to: dismissButton.trailingAnchor)
 
 Since we've removed most of `NSLayoutAnchor`'s boilerplate it is actually looking pretty good. With this syntax, it is a lot easier to read and understand what each anchor is doing and we are also able to decrease the amount of code we've to write. 
 
-### Future Improvements
+## Future Improvements
 
 While this works in most scenarios we are still missing some details:
 
@@ -709,7 +698,7 @@ While this works in most scenarios we are still missing some details:
 
 And this is going to be your homework, or in case it is requested, it might be covered in a second part.
 
-### The End
+## The End
 
 If you've managed to fully read this and reach this ending chapter, I would like to thank you for being with me on this journey through anchors! 
 
