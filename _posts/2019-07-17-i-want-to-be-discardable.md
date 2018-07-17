@@ -83,7 +83,7 @@ There are many other cases where `@discardableResult` can be useful, for example
 
 ## Conclusion
 So, should you use it every single time you have a return value?
-The answer is no, absolutely not. Your interfaces should be as clear as possible and `@discardableResult` adds a small implementation detail that doesn't have much visibility, therefore, it could lead to some readability problems. Plus, it shouldn't be used when you are expecting to use the result of a function most of the times. 
+The answer is no, absolutely not. Your interfaces should be as clear as possible and `@discardableResult` adds a small implementation detail that doesn't have much visibility, therefore, it could lead to some readability problems and inconsistencies. Plus, it shouldn't be used when you are expecting to use the result of a function most of the times. 
 
 And with this, you've now acknowledged `@discardableResult` and what's your opinion about it? Did you know it or is it something new to you? Let me hear it, alongside with questions and feedback on [Twitter](https://twitter.com/pedrommcarrasco) or here with Disqus.
 
