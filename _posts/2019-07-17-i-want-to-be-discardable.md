@@ -10,7 +10,7 @@ image: /assets/posts/i-want-to-be-discardable/banner.jpg
 actions:
     - label: "Source Code"
       icon: github
-      url: "http://www.github.com/pedrommcarrasco/ARbusters"
+      url: "https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/Articles-Source-Code/I%20want%20to%20be%20discardable/Discardable.swift"
 ---
 
 Ever wanted to ignore a value returned from a function but if you do so you'll end up with the following warning? 
@@ -32,7 +32,7 @@ In most case scenarios, you would probably do '`_ = example()`' to silence the w
 ## Our hero
 
 Fear not dear reader because there's a solution to this problem!
-Previous to Swift 2, this warning wouldn't appear unless you've marked your function with `@warn_unused_result`. But in Swift 3, Apple turned on this warning by default and introduced our hero `@discardableResult`. This mark is available since iOS 8.0.
+Prior to Swift 2, this warning wouldn't appear unless you've marked your function with `@warn_unused_result`. But in Swift 3, Apple turned on this warning by default and introduced our hero `@discardableResult`. This mark is available since iOS 8.0.
 
 ## Ignore this, ignore that, I want those
 
