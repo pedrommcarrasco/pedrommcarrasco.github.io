@@ -28,6 +28,7 @@ logo: /assets/photos/portrait.jpg
 search: true
 search_full_content: false
 search_provider: lunr
+environment: production
 
 disqus:
   shortname: https-pedrommcarrasco-github-io
