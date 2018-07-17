@@ -7,6 +7,10 @@ tags:
 - Discard
 layout: post
 image: /assets/posts/i-want-to-be-discardable/banner.jpg
+actions:
+    - label: "Source Code"
+      icon: github
+      url: "http://www.github.com/pedrommcarrasco/ARbusters"
 ---
 
 Ever wanted to ignore a value returned from a function but if you do so you'll end up with the following warning? 
@@ -23,7 +27,7 @@ func example() -> String {
 }
 ```
 
-In most case scenarios, you would probably do `_ = example()`to silence the warning. Although, while this is correct, in case you want to ignore the result of a function most of the times, but still have the possibility to use it, this solution wouldn't look very clean because adding `_ =` every single time would create a lot of boilerplate code and your public interface wouldn't seem well designed.
+In most case scenarios, you would probably do '`_ = example()`' to silence the warning. Although, while this is correct, in case you want to ignore the result of a function most of the times, but still have the possibility to use it, this solution wouldn't look very clean because adding '`_ =`' every single time would create a lot of boilerplate code and your public interface wouldn't seem well designed.
 
 ## Our hero
 
@@ -32,7 +36,7 @@ Previous to Swift 2, this warning wouldn't appear unless you've marked your func
 
 ## Ignore this, ignore that, I want those
 
-Previously you've used `_` to ignore a function result, but this time, we are going to do that by using `@discardableResult`. To do so, we'll replace our function with the following code.
+Previously you've used '`_ =`' to ignore a function result, but this time, we are going to do that by using `@discardableResult`. To do so, we'll replace our function with the following code.
 
 ```swift
 @discardableResult
