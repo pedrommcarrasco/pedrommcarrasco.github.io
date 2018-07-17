@@ -1,7 +1,7 @@
 ---
 title: "I want to be discardable"
 categories:
-- tips & tricks
+- tips and tricks
 tags:
 - Chaining
 - Discard
