@@ -59,7 +59,7 @@ print(value)
 
 If we run the code above you'll see that "This is an example" is printed followed by "This is an example with discardable", meaning that we've successfully stored the result of `example()` in  `value`, appended " with discardable to it" and finally printed it.
 
-## Give me some real examples
+## Real-world examples
 
 You don't have to look too far to find some real-world examples. Take a look at Apple's `NSLayoutAnchor` for example. If you notice when you apply a constraint with anchors, in case you need to save it locally to define a priority, you could easily do:
 
