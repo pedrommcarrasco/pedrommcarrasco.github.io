@@ -6,4 +6,4 @@ collection: posts
 entries_layout: list
 ---
 
-Guides, tips and others. :)
+Here you'll be able to find guides, tips & tricks, book reviews and others.
