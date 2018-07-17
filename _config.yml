@@ -30,7 +30,7 @@ search_full_content: false
 search_provider: lunr
 
 disqus:
-  shortname: pedrommcarrasco
+  shortname: https-pedrommcarrasco-github-io
 
 google_analytics: UA-115564863-1
 
