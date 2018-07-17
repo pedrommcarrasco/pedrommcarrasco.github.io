@@ -31,7 +31,7 @@ In most case scenarios, you would probably do '`_ = example()`' to silence the w
 
 ## Our hero
 
-Fear not dear reader because there's a solution to this problem!
+Fear not, dear reader, because there's a solution to this problem!
 Prior to Swift 2, this warning wouldn't appear unless you've marked your function with `@warn_unused_result`. But in Swift 3, Apple turned on this warning by default and introduced our hero `@discardableResult`. This mark is available since iOS 8.0.
 
 ## Ignore this, ignore that, I want those
@@ -85,6 +85,6 @@ There are many other cases where `@discardableResult` can be useful, for example
 So, should you use it every single time you have a return value?
 The answer is no, absolutely not. Your interfaces should be as clear as possible and `@discardableResult` adds a small implementation detail that doesn't have much visibility, therefore, it could lead to some readability problems and inconsistencies. Plus, it shouldn't be used when you are expecting to use the result of a function most of the times. 
 
-And with this, you've now acknowledged `@discardableResult` and what's your opinion about it? Did you know it or is it something new to you? Let me hear it, alongside with questions and feedback on [Twitter](https://twitter.com/pedrommcarrasco) or here with Disqus.
+And with this, you've now acknowledged `@discardableResult`. What's your opinion about it? Did you know it or is it something new to you? Let me hear it, alongside with questions and feedback on [Twitter](https://twitter.com/pedrommcarrasco) or here with Disqus.
 
 Thanks for your time. ✨
