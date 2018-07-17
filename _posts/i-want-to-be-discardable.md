@@ -8,10 +8,6 @@ tags:
 - tricks
 layout: post
 image: /assets/posts/power-up-your-anchors/banner.jpg
-actions:
-    - label: "Source Code"
-      icon: github
-      url: "http://www.github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/"
 ---
 
 Ever wanted to ignore a value returned from a function but if you do so you'll end up with the following warning? 
