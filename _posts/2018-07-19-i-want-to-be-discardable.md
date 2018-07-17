@@ -17,7 +17,7 @@ Ever wanted to ignore a value returned from a function but if you do so you'll e
 
 ![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/i-want-to-be-discardable/warning.png?raw=true) 
 
-Let's take the following function as an example for this article.
+First of all, let's take the following function as an example for this article.
 
 ```swift
 func example() -> String {
@@ -36,7 +36,7 @@ Prior to Swift 2, this warning wouldn't appear unless you've marked your functio
 
 ## Ignore this, ignore that, I want those
 
-Previously you've used '`_ =`' to ignore a function result, but this time, we are going to do that by using `@discardableResult`. To do so, we'll replace our function with the following code.
+Previously you've used '`_ =`' to ignore a function result, but this time, we are going to do that by using `@discardableResult`. To do so, we'll replace our function with the following code:
 
 ```swift
 @discardableResult
@@ -47,7 +47,7 @@ func example() -> String {
 }
 ```
 
-Now it's time to invoke it.
+Now it's time to invoke our function like this:
 
 ```swift
 example()
