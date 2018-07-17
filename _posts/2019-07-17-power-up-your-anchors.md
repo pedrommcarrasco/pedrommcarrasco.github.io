@@ -150,31 +150,8 @@ Setting `isActive` in every single anchor is painful and even though `NSLayoutCo
 ```
 
 We've decided to put up to use a Swift capability called default parameters. This means that we can call this function without providing a value for the `isActive`'s parameter and in this case, its value will always be true, but in case you need a constraint that's not immediately active, you can always send false to this parameter.
-
-Then, while we tell our lovely machine that our function must return a `NSLayoutConstraint` we also say that this function's return is a `@discardableResult`. In case you never heard about it, here is a short sample that will allow you to understand what it does.
-
-```swift
-extension String {
-
-  func test() {   
-    self.discardable()
-    self.nonDiscardable()
-  }
-
-  @discardableResult
-  func discardable() -> String {
-    return ""
-  }
-
-  func nonDiscardable() -> String {
-    return ""
-  }
-}
-```
-
-Compile it and you'll notice that you've got a warning in your `nonDiscardable()` function call because you aren't using the value returned. Also, notice that the `discardable()` call surprisingly doesn't have any warning. That's exactly what  `@discardableResult` does, it tells the compiler that it shouldn't worry if we're discarding, by not using or storing the object returned. Now that you know everything about `@discardableResult`let's move back to our Auto Layout function.
-
-So, if we wanted to use our function it would look like this.
+Then, while we tell our lovely machine that our function must return a `NSLayoutConstraint` we also say that this function's return is a `@discardableResult`. In case you never heard about it, take a look at [this](https://pedrommcarrasco.github.io/posts/i-want-to-be-discardable/). 
+With all of this, we'll be able to achieve the following code.
 
 ```swift
 let a = UIView()
