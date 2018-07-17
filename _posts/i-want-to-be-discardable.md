@@ -3,9 +3,8 @@ title: "I want to be discardable"
 categories:
 - tips & tricks
 tags:
-- chaining
-- tips
-- tricks
+- Chaining
+- Discard
 layout: post
 image: /assets/posts/power-up-your-anchors/banner.jpg
 ---
@@ -78,7 +77,7 @@ But if you don't want use the `NSLayoutConstraint` returned, you're also allowed
 
 There are many other cases where `@discardableResult` can be useful, for example, it can also be handy for chaining functions.
 
-## ## Conclusion
+## Conclusion
 So, should you use it every single time you have a return value?
 The answer is no, absolutely not. Your interfaces should be as clear as possible and `@discardableResult` adds a small implementation detail that doesn't have much visibility, therefore, it could lead to some readability problems. Plus, it shouldn't be used when you are expecting to use the result of a function most of the times. 
 
