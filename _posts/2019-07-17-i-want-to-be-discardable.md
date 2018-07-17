@@ -6,7 +6,7 @@ tags:
 - Chaining
 - Discard
 layout: post
-image: /assets/posts/power-up-your-anchors/banner.jpg
+image: /assets/posts/i-want-to-be-discardable/banner.jpg
 ---
 
 Ever wanted to ignore a value returned from a function but if you do so you'll end up with the following warning? 
