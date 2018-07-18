@@ -17,7 +17,7 @@ Ever wanted to ignore a value returned from a function but if you do so you'll e
 
 ![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/i-want-to-be-discardable/warning.png?raw=true) 
 
-First of all,  take the following function as an example for this article.
+First of all, take the following function as an example for this article.
 
 ```swift
 func example() -> String {
@@ -27,7 +27,7 @@ func example() -> String {
 }
 ```
 
-In most scenarios, you would use '`_ = example()`' to silence the warning. Although, while this is correct, in case you want to ignore the result of a function most of the times, but still have the possibility to use it, this solution wouldn't look very clean because adding '`_ =`' every single time would create a lot of boilerplate code and your public interface wouldn't seem well designed.
+In most scenarios, you would use '`_ = example()`' to silence the warning. While this is correct, adding '`_ =`' every single time would create a lot of boilerplate code and your public interface wouldn't seem well designed. Keep in mind that changing the function to `Void` isn't an option for this specific example because we might want to use `example()`'s return in some scenario.
 
 ## The hero
 
