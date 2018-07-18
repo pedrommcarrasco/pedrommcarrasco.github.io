@@ -76,7 +76,7 @@ let aBottom = a.bottomAnchor.constraint(equalTo: b.bottomAnchor)
 aBottom.priority = .defaultHigh
 ```
 
-But if you don't want use the `NSLayoutConstraint` returned, you're also allowed to ignore it without Xcode displaying any warning.
+If you don't want use the `NSLayoutConstraint` returned, you're also allowed to ignore it without Xcode displaying any warning.
 
 There are many other cases where `@discardableResult` can be useful, for example, it can also be handy for chaining functions.
 
