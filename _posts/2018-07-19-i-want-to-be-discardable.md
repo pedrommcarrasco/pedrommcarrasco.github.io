@@ -35,7 +35,7 @@ Prior to Swift 2, this warning wouldn't appear unless you've marked your functio
 
 ## Ignore this, ignore that, I want those
 
-Previously you've used '`_ =`' to ignore a function result, but this time, you are going to do that by using `@discardableResult`. To do so, you'll replace the previous function with the following:
+Previously you've used '`_ =`' to ignore a function result, but this time, you are going to do so by using `@discardableResult`. To do so, you'll replace the previous function with the following:
 
 ```swift
 @discardableResult
