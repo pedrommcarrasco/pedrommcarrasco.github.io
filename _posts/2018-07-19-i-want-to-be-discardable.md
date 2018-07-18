@@ -17,7 +17,7 @@ Ever wanted to ignore a value returned from a function but if you do so you'll e
 
 ![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/i-want-to-be-discardable/warning.png?raw=true) 
 
-First of all, let's take the following function as an example for this article.
+First of all,  take the following function as an example for this article.
 
 ```swift
 func example() -> String {
@@ -27,16 +27,15 @@ func example() -> String {
 }
 ```
 
-In most case scenarios, you would probably do '`_ = example()`' to silence the warning. Although, while this is correct, in case you want to ignore the result of a function most of the times, but still have the possibility to use it, this solution wouldn't look very clean because adding '`_ =`' every single time would create a lot of boilerplate code and your public interface wouldn't seem well designed.
+In most scenarios, you would use '`_ = example()`' to silence the warning. Although, while this is correct, in case you want to ignore the result of a function most of the times, but still have the possibility to use it, this solution wouldn't look very clean because adding '`_ =`' every single time would create a lot of boilerplate code and your public interface wouldn't seem well designed.
 
-## Our hero
+## The hero
 
-Fear not, dear reader, because there's a solution to this problem!
-Prior to Swift 2, this warning wouldn't appear unless you've marked your function with `@warn_unused_result`. But in Swift 3, Apple turned on this warning by default and introduced our hero `@discardableResult`. This mark is available since iOS 8.0.
+Prior to Swift 2, this warning wouldn't appear unless you've marked your function with `@warn_unused_result`. In Swift 3, Apple turned on this warning by default and introduced `@discardableResult`. This mark is available since iOS 8.0.
 
 ## Ignore this, ignore that, I want those
 
-Previously you've used '`_ =`' to ignore a function result, but this time, we are going to do that by using `@discardableResult`. To do so, we'll replace our function with the following code:
+Previously you've used '`_ =`' to ignore a function result, but this time, you are going to do that by using `@discardableResult`. To do so, you'll replace the previous function with the following:
 
 ```swift
 @discardableResult
@@ -47,13 +46,13 @@ func example() -> String {
 }
 ```
 
-Now it's time to invoke our function like this:
+Now, invoke your function like this:
 
 ```swift
 example()
 ```
 
-Compile and you'll confirm that Xcode didn't show any kind of warning this time. But what if we want to use the value returned? 
+Compile and you'll verify that Xcode didn't show any kind of warning this time. But what if you want to use the value returned? 
 
 ```swift
 var value = example()
@@ -61,7 +60,7 @@ value.append(" with discardable")
 print(value)
 ```
 
-If we run the code above you'll see that "This is an example" is printed followed by "This is an example with discardable", meaning that we've successfully stored the result of `example()` in  `value`, appended " with discardable to it" and finally printed it.
+If you run the code above you'll see that "This is an example" is printed followed by "This is an example with discardable", meaning that you've successfully stored the result of `example()` in  `value`, appended " with discardable to it" and finally printed it.
 
 ## Real-world examples
 
@@ -87,6 +86,6 @@ The answer is no, absolutely not. Your interfaces should be as clear as possible
 
 And with this, you've now acknowledged `@discardableResult`. What's your opinion about it? Did you know it or is it something new to you? Let me hear it, alongside with your questions and feedback on [Twitter](https://twitter.com/pedrommcarrasco) or here.
 
-Last but not least, I would like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Tiago Silva](https://www.linkedin.com/in/tiagomssilva/), [Pedro Eusébio](https://www.linkedin.com/in/peusebio/) and [José Figueiredo](https://twitter.com/ZeMiguelFig) for their outstanding support. ❤️
+Last but not least, I would like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Tiago Silva](https://www.linkedin.com/in/tiagomssilva/), [Pedro Eusébio](https://www.linkedin.com/in/peusebio/), [José Figueiredo](https://twitter.com/ZeMiguelFig) and [Warren Burton](https://twitter.com/TroutDev) for their outstanding support. ❤️
 
 Thanks for reading. ✨
