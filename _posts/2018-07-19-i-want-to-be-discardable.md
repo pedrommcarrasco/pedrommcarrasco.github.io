@@ -87,4 +87,6 @@ The answer is no, absolutely not. Your interfaces should be as clear as possible
 
 And with this, you've now acknowledged `@discardableResult`. What's your opinion about it? Did you know it or is it something new to you? Let me hear it, alongside with questions and feedback on [Twitter](https://twitter.com/pedrommcarrasco) or here with Disqus.
 
-Thanks for your time. ✨
+I would also like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Tiago Silva](https://www.linkedin.com/in/tiagomssilva/), [Pedro Eusébio](https://www.linkedin.com/in/peusebio/) and [José Figueiredo](https://twitter.com/ZeMiguelFig) for their outstanding support.
+
+Thanks for reading. ✨
