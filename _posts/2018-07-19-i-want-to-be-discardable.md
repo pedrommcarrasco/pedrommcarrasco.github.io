@@ -31,7 +31,11 @@ In most scenarios, you would use '`_ = example()`' to silence the warning. While
 
 ## The Hero
 
-Prior to Swift 2, this warning wouldn't appear unless you've marked your function with `@warn_unused_result`. In Swift 3, Apple turned on this warning by default and introduced `@discardableResult`. This mark is available since iOS 8.0.
+Prior to Swift 2, this warning wouldn't appear unless you've marked your function with `@warn_unused_result`. In Swift 3, Apple turned on this warning by default and introduced `@discardableResult`. 
+
+"*Apply this attribute to a function or method declaration to suppress the compiler warning when the function or method that returns a value is called without using its result.*" - [Swift.org](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html)
+
+This mark is available since iOS 8.0.
 
 ## Ignore this, Ignore that, I want those
 
