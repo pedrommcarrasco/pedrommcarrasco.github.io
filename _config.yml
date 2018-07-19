@@ -79,7 +79,7 @@ collections:
     permalink: /:collection/:path/
   posts:
     output: true
-    permalink: /:collection/:path/
+    permalink: /:collection/:title/
 
 # Front Matter Defaults
 defaults:
