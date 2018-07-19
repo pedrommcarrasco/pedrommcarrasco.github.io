@@ -1,13 +1,12 @@
 ---
 title: "I want to be discardable"
+image: /assets/posts/i-want-to-be-discardable/banner.jpg
 categories:
 - tips and tricks
 tags:
 - Chaining
 - Discard
 layout: post
-image: /assets/posts/i-want-to-be-discardable/banner.jpg
-permalink: i-want-to-be-discardable
 actions:
     - label: "Source Code"
       icon: github

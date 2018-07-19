@@ -17,7 +17,7 @@ lang: en-US
 title: Pedro Carrasco
 email: pedrommcarrasco@gmail.com
 description: Welcome to Pedro Carrasco's website
-url: https:/pedrommcarrasco.github.io
+# url: https:/pedrommcarrasco.github.io
 author:
   name: Pedro Carrasco
   twitter: pedrommcarrasco
@@ -43,7 +43,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
 
-# Pagination - https://jekyllrb.com/docs/pagination/
+# Pagination
 paginate: 10
 paginate_path: /page:num/
 
