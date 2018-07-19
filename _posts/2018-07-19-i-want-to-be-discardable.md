@@ -7,7 +7,7 @@ tags:
 - Discard
 layout: post
 image: /assets/posts/i-want-to-be-discardable/banner.jpg
-permalink: i-want-to-be-discardable
+
 actions:
     - label: "Source Code"
       icon: github
