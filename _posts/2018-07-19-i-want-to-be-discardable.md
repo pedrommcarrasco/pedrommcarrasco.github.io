@@ -14,6 +14,10 @@ actions:
       url: "https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/Articles-Source-Code/I%20want%20to%20be%20discardable/Discardable.swift"
 ---
 
+<meta property="og:image" content="https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/i-want-to-be-discardable/banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+
 Ever wanted to ignore a value returned from a function but if you do so you'll end up with the following warning? 
 
 ![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/i-want-to-be-discardable/warning.png?raw=true) 
