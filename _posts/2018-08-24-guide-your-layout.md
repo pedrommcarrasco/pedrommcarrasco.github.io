@@ -37,7 +37,7 @@ It also improved efficiency and safety since you avoid the following issues rega
 
 It's also important to notice that, similar to `UIStackView`, `UILayoutGuide` cannot have a background color, among other properties.
 
-## World’s Famous Guide
+## World’s Most Famous Guide
 
 Alongside with iOS 11, Apple introduced the Safe Area Layout Guide while deprecating the top and bottom layout guides.
 
