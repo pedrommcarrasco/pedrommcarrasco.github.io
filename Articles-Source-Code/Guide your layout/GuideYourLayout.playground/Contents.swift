@@ -6,7 +6,7 @@ class MyViewController : UIViewController {
     // MARK: Constants
     private enum Constants {
         static let introLabelTopSpacing: CGFloat = 16.0
-        static let photoDimension: CGFloat = 250.0
+        static let photoHeight: CGFloat = 250.0
         static let photo = UIImage(named:"photo.jpg")
         static let intro = "I’m Pedro, a Portuguese iOS Engineer since February 2017. I’ve studied at Instituto Superior de Engenharia do Porto and there I’ve got my bachelor’s degree in Software Engineering. Currently, I’m working in Farfetch."
     }
@@ -67,8 +67,8 @@ class MyViewController : UIViewController {
                 photoImageView.topAnchor.constraint(equalTo: layoutGuide.topAnchor),
                 
                 photoImageView.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
-                photoImageView.heightAnchor.constraint(equalToConstant: Constants.photoDimension),
-                photoImageView.widthAnchor.constraint(equalToConstant: Constants.photoDimension),
+                photoImageView.heightAnchor.constraint(equalToConstant: Constants.photoHeight),
+                photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor),
                 
                 introLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: Constants.introLabelTopSpacing),
                 introLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),

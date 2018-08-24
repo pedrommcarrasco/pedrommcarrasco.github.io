@@ -1,3 +1,19 @@
+---
+title: "Guide Your Layout"
+image: /assets/posts/guide-your-layout/banner.jpg
+categories:
+- Auto Layout
+tags:
+- UI
+- Tips & Tricks
+- Performance
+layout: post
+actions:
+- label: "Source Code"
+icon: github
+url: "https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/tree/master/Articles-Source-Code/Guide%20your%20layout/GuideYourLayout.playground"
+---
+
 How would you achieve the following screen? 
 
 ![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/guide-your-layout/goal.jpg?raw=true)

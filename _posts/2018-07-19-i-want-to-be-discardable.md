@@ -1,5 +1,5 @@
 ---
-title: "I want to be discardable"
+title: "I Want To Be Discardable"
 image: /assets/posts/i-want-to-be-discardable/banner.jpg
 categories:
 - tips and tricks
