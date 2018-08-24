@@ -93,9 +93,14 @@ NSLayoutConstraint.activate(
 
 Keep in mind that `photoImageView` and `introLabel` setup isn't in the scope of this article. Still, if you're interested in it, take a look [here](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/tree/master/Articles-Source-Code/Guide%20your%20layout/GuideYourLayout.playground).
 
+`UILayoutGuide`isn't available in Interface Builder, so you'll have to use like it previous example.
+
+
 ## Conclusion
 
 Most of the times, you'll end up using a `UIStackView` to solve problems alike but there are cases where `UILayoutGuide` shines. The presented problem isn't the case and it was just used for a matter of presentation.
+
+Unfortunately, in case you prefer working with Interface Builder, `UILayoutGuide` isn't available there.
 
 In the end, what's your opinion of it? Did you know it or is it something new to you? Let me know it, alongside with your questions and feedback on [Twitter](https://twitter.com/) or here.
 
