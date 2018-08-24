@@ -69,7 +69,7 @@ Notice that, since `UILayoutGuide` isn't a member of the view hierarchy you'll b
 [photoImageView, introLabel].forEach { self.view.addSubview($0) }
 ```
 
-You're now done with the `UILayoutGuide ` initial setup and with so, it's time to move to constraints. In the end, it is similar to what you would do with an `UIView`.
+You're now done with the `UILayoutGuide`'s initial setup and with so, it's time to move to constraints. In the end, it is similar to what you would do with an `UIView`.
 
 ```swift
 NSLayoutConstraint.activate(
