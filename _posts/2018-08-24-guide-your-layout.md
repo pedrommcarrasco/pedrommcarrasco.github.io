@@ -96,7 +96,7 @@ Keep in mind that `photoImageView` and `introLabel` setup isn't in the scope of 
 
 ## Conclusion
 
-Most of the times, you'll end up using a `UIStackView` to solve problems alike but there are cases where `UILayoutGuide` shines. Also notice that the presented problem isn't the case and it was just used for a matter of presentation.
+Most of the times, you'll end up using a `UIStackView` to solve problems alike but there are cases where `UILayoutGuide` shines. The presented problem isn't the case and it was just used for a matter of presentation.
 
 In the end, what's your opinion of it? Did you know it or is it something new to you? Let me know it, alongside with your questions and feedback on [Twitter](https://twitter.com/) or here.
 
