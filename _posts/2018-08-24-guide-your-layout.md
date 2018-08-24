@@ -22,10 +22,11 @@ You can easily spot an `UIImageView` and an `UILabel` centered together.
 
 There are multiple approaches to this problem and the most obvious would be to insert these two elements in a `UIStackView`. But what if, in a more complex layout, you weren´t able to use it? The most common approach, although not the best, would be encapsulating the `UIImageView` and the `UILabel` inside a `UIView`.
 
-In this article, you'll learn how you should do it in this scenario.
+In this article, you'll learn how to approach this problem in this scenario.
 
 ## I'm Here to Guide You!
-In iOS 9.0, Apple introduced major changes to its frameworks, one of them was `UILayoutGuide`.
+In iOS 9.0, Apple introduced major changes to its frameworks and added new ones
+. One of them was `UILayoutGuide`.
 
  `UILayoutGuide` is a *“rectangular area that can interact with Auto Layout”* and it should be used to replace any `UIView` used for *"inter-view spaces or encapsulation"* (dummy view).
 
