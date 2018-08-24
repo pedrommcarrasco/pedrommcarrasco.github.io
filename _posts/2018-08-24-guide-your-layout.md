@@ -100,6 +100,6 @@ Most of the times, you'll end up using a `UIStackView` to solve problems alike b
 
 In the end, what's your opinion of it? Did you know it or is it something new to you? Let me know it, alongside with your questions and feedback on [Twitter](https://twitter.com/) or here.
 
-Last but not least, I would like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Tiago Silva](https://twitter.com/tiagomssilvaa), [Pedro Eusébio](https://www.linkedin.com/in/peusebio/), [José Figueiredo](https://twitter.com/ZeMiguelFig) and [João Pereira](https://twitter.com/NSMyself) for their outstanding support. ❤️
+Last but not least, I would like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Tiago Silva](https://twitter.com/tiagomssilvaa), [José Figueiredo](https://twitter.com/ZeMiguelFig) and [João Pereira](https://twitter.com/NSMyself) for their outstanding support. ❤️
 
 Thanks for reading. ✨
