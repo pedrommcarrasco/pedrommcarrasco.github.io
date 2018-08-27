@@ -25,11 +25,10 @@ There are multiple approaches to this problem and the most obvious would be to i
 In this article, you'll learn how to approach this problem in this scenario.
 
 ## I'm Here to Guide You!
-In iOS 9.0, Apple introduced major changes to its frameworks and added new ones. One of them was `UILayoutGuide`.
 
- `UILayoutGuide` is a *“rectangular area that can interact with Auto Layout”* and it should be used to replace any `UIView` used for *"inter-view spaces or encapsulation"* (dummy view).
+In iOS 9.0, Apple introduced major changes to its frameworks and added new ones. One of them was [ `UILayoutGuide`](https://developer.apple.com/documentation/uikit/uilayoutguide).
 
-It also improved efficiency and safety since you avoid the following issues regarding dummy views:
+ `UILayoutGuide` is a *“rectangular area that can interact with Auto Layout”*. It should be used to replace any `UIView` used for *"inter-view spaces or encapsulation"* since it improved efficiency and safety by avoiding the following issues regarding these kind of `UIView` (dummy views):
 
 * Creating and maintaining a `UIView` impacts performance
 * Each member of the view hierarchy adds overhead to every task the hierarchy performs
@@ -47,7 +46,7 @@ According to its [documentation](https://developer.apple.com/documentation/uikit
 
 ## Time to Solve Problems
 
-With all the knowledge acquired, you are now able to solve the initial problem using `UILayoutGuide` instead of a *dummy view*.
+With all the knowledge acquired, you are now able to solve the initial problem using `UILayoutGuide` instead of a dummy view.
 
 To start off, if you were using an `UIView` for encapsulation, you would start by creating it and adding it to the hierarchy:
 
