@@ -17,4 +17,4 @@ TBD (Short Intro)
 ## Code (TBD)
 
 ## Feedback
-Your feedback is extremely valuable to me. If you attented to this talk, please provide it (here)[https://goo.gl/forms/s6tJIVuIFou6NKof1]. 🙏
+Your feedback is extremely valuable to me. If you attented to this talk, please provide it [here](https://goo.gl/forms/s6tJIVuIFou6NKof1). 🙏
