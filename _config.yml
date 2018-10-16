@@ -39,9 +39,13 @@ google_analytics: UA-115564863-1
 markdown: kramdown
 theme: jekyll-theme-basically-basic
 plugins:
+  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
+
+feed:
+  path: atom.xml
 
 # Pagination
 paginate: 10
