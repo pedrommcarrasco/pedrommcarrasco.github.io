@@ -80,6 +80,9 @@ collections:
   posts:
     output: true
     permalink: /:collection/:title/
+  talks:
+    output: true
+    permalink: /:collection/:title/
 
 # Front Matter Defaults
 defaults:
@@ -90,6 +93,15 @@ defaults:
     values:
       layout: post
       read_time: true
+  
+  # _talks
+  - scope:
+      path: "_talks"
+      type: talks
+    values:
+      layout: post
+      read_time: false
+
 
   # _experience
   - scope:
