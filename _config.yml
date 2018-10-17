@@ -73,6 +73,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - Articles-Source-Code/
+  - Talks-Content/
 
 collections:
   experience:
