@@ -11,5 +11,5 @@ This website was based on the mmistakes's jekyll theme Basically Basic (https://
 
 ## Talks Content Index
 
-* [CocoaHeads Porto: Power-Up Your Anchors](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/tree/master/Talks-Content/))
+* [CocoaHeads Porto: Power-Up Your Anchors](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/Talks-Content/CocoaHeadsPorto_PowerUp_Your_Anchors)
 
