@@ -73,6 +73,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - Articles-Source-Code/
+  - Talks-Content/
 
 collections:
   experience:
@@ -82,6 +83,9 @@ collections:
     output: true
     permalink: /:collection/:path/
   posts:
+    output: true
+    permalink: /:collection/:title/
+  talks:
     output: true
     permalink: /:collection/:title/
 
@@ -94,6 +98,15 @@ defaults:
     values:
       layout: post
       read_time: true
+  
+  # _talks
+  - scope:
+      path: "_talks"
+      type: talks
+    values:
+      layout: post
+      read_time: false
+
 
   # _experience
   - scope:
