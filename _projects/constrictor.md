@@ -78,40 +78,40 @@ Bellow, there's a comparison on how to apply constraints with and without Constr
 [redView, blueView, greenView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
 if #available(iOS 11.0, *) {
-let safeArea = view.safeAreaLayoutGuide
+  let safeArea = view.safeAreaLayoutGuide
 
-NSLayoutConstraint.activate([
-blueView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-blueView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-]) 
+  NSLayoutConstraint.activate([
+    blueView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+    blueView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+  ]) 
 } else {
-let safeLayoutGuide = UILayoutGuide()
-view.addLayoutGuide(safeLayoutGuide)
+  let safeLayoutGuide = UILayoutGuide()
+  view.addLayoutGuide(safeLayoutGuide)
 
-NSLayoutConstraint.activate([
-safeLayoutGuide.topAnchor.constraint(equalTo: topLayoutGuide),
-safeLayoutGuide.bottomAnchor.constraint(equalTo: bottomLayoutGuide),
-safeLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-safeLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+  NSLayoutConstraint.activate([
+    safeLayoutGuide.topAnchor.constraint(equalTo: topLayoutGuide),
+    safeLayoutGuide.bottomAnchor.constraint(equalTo: bottomLayoutGuide),
+    safeLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+    safeLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-blueView.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
-blueView.centerYAnchor.constraint(equalTo: safeLayoutGuide.centerYAnchor)
-]) 
+    blueView.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
+    blueView.centerYAnchor.constraint(equalTo: safeLayoutGuide.centerYAnchor)
+  ]) 
 }
 
 NSLayoutConstraint.activate([
-redView.topAnchor.constraint(equalTo: view.topAnchor),
-redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-redView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+  redView.topAnchor.constraint(equalTo: view.topAnchor),
+  redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+  redView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+  redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-blueView.widthAnchor.constraint(equalToConstant: 75.0),
-blueView.heightAnchor.constraint(equalToConstant: 75.0),
+  blueView.widthAnchor.constraint(equalToConstant: 75.0),
+  blueView.heightAnchor.constraint(equalToConstant: 75.0),
 
-greenView.widthAnchor.constraint(equalTo: blueView.widthAnchor),
-greenView.heightAnchor.constraint(equalTo: redView.heightAnchor),
-greenView.centerYAnchor.constraint(equalTo: blueView.centerYAnchor),
-greenView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: 50.0)
+  greenView.widthAnchor.constraint(equalTo: blueView.widthAnchor),
+  greenView.heightAnchor.constraint(equalTo: redView.heightAnchor),
+  greenView.centerYAnchor.constraint(equalTo: blueView.centerYAnchor),
+  greenView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: 50.0)
 ])
 ```
 
@@ -120,11 +120,11 @@ greenView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: 5
 redView.constrictEdges(to: self, withinGuides: false)
 
 blueView.constrictSize(to: 75.0)
-.constrictCenter(in: self)
+  .constrictCenter(in: self)
 
 greenView.constrict(to: blueView, attributes: .width, .centerYGuide)
-.constrictToParent(attributes: .height)
-.constrict(.trailing, to: blueView, attribute: .leading, with: 50.0)
+  .constrictToParent(attributes: .height)
+  .constrict(.trailing, to: blueView, attribute: .leading, with: 50.0)
 ```
 
 ##  Sample Project

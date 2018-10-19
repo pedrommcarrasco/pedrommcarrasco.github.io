@@ -16,6 +16,8 @@ ARbusters is an augmented reality game in a pixel/billboard style. The gameplay 
 ##  Gameplay
 [![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/projects/arbusters/thumbnail.png?raw=true)](https://youtu.be/-gL7m_d2hdY "Click to watch ARbusters) Gameplay")
 
+## Technologies
+
 * MVC-Coordinator
 * Dependency Injection Container
 * User Interface & AutoLayout in code
