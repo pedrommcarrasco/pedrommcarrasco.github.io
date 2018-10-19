@@ -19,9 +19,7 @@ comments: false
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![apm](https://img.shields.io/apm/l/vim-mode.svg)](https://github.com/pedrommcarrasco/Constrictor/blob/master/LICENSE)
 
-
-## Installation 📦 
-
+## Installation
 ### CocoaPods
 Constrictor's available through [CocoaPods](https://cocoapods.org/pods/Constrictor). To do so, add the following line to your PodFile:
 
@@ -34,9 +32,7 @@ And then run the following command in terminal:
 pod install
 ```
 
-
 ### Carthage
-
 Add this to your Cartfile:
 
 ```swift
@@ -49,9 +45,7 @@ And then run the following command in terminal:
 carthage update
 ```
 
-
-## Usage Example ⌨️ 
-
+## Usage Example
 After installing Constrictor, you should import the framework:
 
 ```swift
@@ -76,10 +70,9 @@ greenView.backgroundColor = .green
 redView.addSubview(greenView)
 ```
 
-Down bellow, you'll see how you apply constraints with and without Constrictor.
+Bellow, there's a comparison on how to apply constraints with and without Constrictor. There's also a documentation dedicated page available [here](https://github.com/pedrommcarrasco/Constrictor/blob/master/DOCUMENTATION.md).
 
-
-### How you're *probably* doing it without Constrictor 😰
+### How you're *probably* doing it without Constrictor
 
 ```swift
 [redView, blueView, greenView].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -87,62 +80,52 @@ Down bellow, you'll see how you apply constraints with and without Constrictor.
 if #available(iOS 11.0, *) {
 let safeArea = view.safeAreaLayoutGuide
 
-  NSLayoutConstraint.activate(
-    [
-      blueView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      blueView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ]
-  ) 
+NSLayoutConstraint.activate([
+blueView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+blueView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+]) 
 } else {
-  let safeLayoutGuide = UILayoutGuide()
-  view.addLayoutGuide(safeLayoutGuide)
+let safeLayoutGuide = UILayoutGuide()
+view.addLayoutGuide(safeLayoutGuide)
 
-  NSLayoutConstraint.activate(
-    [
-      safeLayoutGuide.topAnchor.constraint(equalTo: topLayoutGuide),
-      safeLayoutGuide.bottomAnchor.constraint(equalTo: bottomLayoutGuide),
-      safeLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      safeLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+NSLayoutConstraint.activate([
+safeLayoutGuide.topAnchor.constraint(equalTo: topLayoutGuide),
+safeLayoutGuide.bottomAnchor.constraint(equalTo: bottomLayoutGuide),
+safeLayoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+safeLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-      blueView.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
-      blueView.centerYAnchor.constraint(equalTo: safeLayoutGuide.centerYAnchor)
-    ]
-  ) 
+blueView.centerXAnchor.constraint(equalTo: safeLayoutGuide.centerXAnchor),
+blueView.centerYAnchor.constraint(equalTo: safeLayoutGuide.centerYAnchor)
+]) 
 }
 
-NSLayoutConstraint.activate(
-  [
-    redView.topAnchor.constraint(equalTo: view.topAnchor),
-    redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-    redView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-    redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+NSLayoutConstraint.activate([
+redView.topAnchor.constraint(equalTo: view.topAnchor),
+redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+redView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-    blueView.widthAnchor.constraint(equalToConstant: 75.0),
-    blueView.heightAnchor.constraint(equalToConstant: 75.0),
+blueView.widthAnchor.constraint(equalToConstant: 75.0),
+blueView.heightAnchor.constraint(equalToConstant: 75.0),
 
-    greenView.widthAnchor.constraint(equalTo: blueView.widthAnchor),
-    greenView.heightAnchor.constraint(equalTo: redView.heightAnchor),
-    greenView.centerYAnchor.constraint(equalTo: blueView.centerYAnchor),
-    greenView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: 50.0)
-  ]
-)
+greenView.widthAnchor.constraint(equalTo: blueView.widthAnchor),
+greenView.heightAnchor.constraint(equalTo: redView.heightAnchor),
+greenView.centerYAnchor.constraint(equalTo: blueView.centerYAnchor),
+greenView.trailingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: 50.0)
+])
 ```
 
-
-### How you can do it with Constrictor 😍
-
+### How you can do it with Constrictor
 ```swift
-redView.constrictEdgesToViewController(self, withinGuides: false)
+redView.constrictEdges(to: self, withinGuides: false)
 
-blueView.constrict(attributes: .width, .height, constant: 75.0)
-  .constrictCenterInViewController(self)
+blueView.constrictSize(to: 75.0)
+.constrictCenter(in: self)
 
 greenView.constrict(to: blueView, attributes: .width, .centerYGuide)
-  .constrictToSuperview(attributes: .height)
-  .constrict(.trailing, to: blueView, attribute: .leading, constant: 50.0)
+.constrictToParent(attributes: .height)
+.constrict(.trailing, to: blueView, attribute: .leading, with: 50.0)
 ```
 
-
-##  Sample Project 📲
-
+##  Sample Project
 There's a sample project in this repository called [Example](https://github.com/pedrommcarrasco/Constrictor/tree/master/Example), if you want to take a look at Constrictor before using it in your projects, feel free to take a look at it and try to apply some constraints with it.
