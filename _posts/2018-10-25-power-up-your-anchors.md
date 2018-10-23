@@ -8,7 +8,7 @@ tags:
 layout: post
 ---
 
-Programmatically done Auto Layout is still the preferred way of implementing views by a lot of developers. While there amazing open-source frameworks, most of them differ from Apple’s anchor syntax. Therefore, by adding them to your project, you’ll raise the entry level complexity of your project and increase its  learning curve. In this article, you’ll learn how to avoid adding an external dependency and create your own layer above `NSLayoutAnchor`  to solve some of its issues.
+Programmatically done Auto Layout is still the preferred way of implementing views by a lot of developers. While there amazing open-source frameworks, most of them differ from Apple’s anchor syntax. Therefore, by adding them to your project, you’ll raise the entry level complexity of your project and increase its  learning curve. In this article, you’ll learn how to avoid adding an external dependency and create your own layer above `NSLayoutAnchor` to solve some of its issues.
 
 ### Introduction
 
@@ -24,7 +24,7 @@ Apple’s  [documentation](https://developer.apple.com/documentation/uikit/nslay
 
 *"While the `NSLayoutAnchor` class provides additional type checking, it is still possible to create invalid constraints, For example, the compiler allows you to constrain one view's `leadingAnchor` with another view's `leftAnchor`, since they are both `NSLayoutXAxisAnchor` instances. However, Auto Layout does not allow constraints that mix leading and trailing attributes with left or right attributes"*
 
-First of all, take a look at the following code and try to identify some of `NSLayoutAncho``r’s boilerplate code.
+First of all, take a look at the following code and try to identify some of `NSLayoutAnchor`’s boilerplate code.
 
 ```swift
 // Subviews
@@ -60,7 +60,6 @@ welcomeLabel.trailingAnchor.constraint(equalTo: dismissButton.trailingAnchor).is
 According to this implementation, you should have found the following requirements:
 
 * You must set `translatesAutoresizingMaskIntoConstraints` to `false` for every view;
-
 * You must activate constraints by setting its property `isActive` to `true` or by using `NSLayoutConstraint.activate()`;
 * You cannot set `UILayoutPriority` via a parameter and must instead create a variable.
 
@@ -156,6 +155,7 @@ One way of solving this would be to set `isActive` to true by `default`. You can
 This function uses a Swift capability called default argument. It allows `isActive` to be called as an optional argument. By default, it will always be set to `true`. But in case you don’t want it active, you can set it to `false`.
 
 By using `@discardableResult`, you will be returning an `NSLayoutConstraint` that you can safely ignore if you don’t need it. In case you never heard about this keyword, I’ve written an article titled “[I Want to be Discardable](https://pedrommcarrasco.github.io/posts/i-want-to-be-discardable/)” that addresses this.
+
 ### Too many functions!
 
 Currently, you only support a relation of `equalTo` when you should also support `greaterThanOrEqualTo` and `lessThanOrEqualTo`.
@@ -220,7 +220,6 @@ b.leadingAnchor.constrain(.lessThanOrEqual, to: a.leadingAnchor)
 
 Everything seems to be working well. But what if you try to apply a width constraint based on a constant? Add the following line of code to the previous example and rebuild:
 
-
 ```swift
 b.widthAnchor.constrain(to: 50.0)
 ```
@@ -246,7 +245,6 @@ According to Apple’s documentation, you are only allowed to set a constraint w
 To avoid missing cases that already exist, you should also have the option to apply a constraint between two `NSLayouDimension` anchors with a constant & multiplier.
 
 In order to address this, you must enable this feature only for `NSLayoutDimension`’s anchors. Therefore, you are going to extend `NSLayoutDimension` with the following code:
-
 
 ```swift
 extension NSLayoutDimension {
