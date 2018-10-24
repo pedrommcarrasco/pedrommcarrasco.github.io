@@ -1,5 +1,5 @@
 ---
-title: "Splashy"
+title: "Fluky"
 image: 
   path: /assets/projects/fluky/cover.png
   thumbnail: /assets/projects/fluky/logo.png
@@ -11,11 +11,11 @@ actions:
 comments: false
 ---
 
+Make every loading screen different with Fluky, your random loading screen inspired by PlayStation.
+
 > **Fluky** *(/ˈfluːki/)*, *adjective*
 >
 > "obtained or achieved more by chance than skill"
-
-Make every loading screen different with Fluky, your random loading screen inspired by PlayStation.
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/Fluky.svg)](https://cocoapods.org/pods/Fluky)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
