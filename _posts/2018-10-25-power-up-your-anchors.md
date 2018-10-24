@@ -8,11 +8,11 @@ tags:
 layout: post
 ---
 
-Programmatically done Auto Layout is still the preferred way of implementing views by a lot of developers. While there amazing open-source frameworks, most of them differ from Apple’s anchor syntax. Therefore, by adding them to your project, you’ll raise the entry level complexity of your project and increase its  learning curve. In this article, you’ll learn how to avoid adding an external dependency and create your own layer above `NSLayoutAnchor` to solve some of its issues.
+Programmatically done Auto Layout is still the preferred way of implementing views by a lot of developers. While there amazing open-source frameworks, most of them differ from Apple’s anchor syntax. Therefore, by adding them to your project, you’ll raise the entry level complexity of your project and increase its learning curve. In this article, you’ll learn how to avoid adding an external dependency and create your own layer above `NSLayoutAnchor` to solve some of its issues.
 
 ### Introduction
 
-`NSLayoutAnchor` was first introduced by Apple in iOS 9.0 and it’s described as a *"factory class for creating layout constraint objects using a fluent API"*.  Apple's [documentation](https://developer.apple.com/documentation/uikit/nslayoutanchor)  also refers that `NSLayoutAnchor` usage is preferred when compared to `NSLayoutConstraint`: “use these constraints to programmatically define your layout using Auto Layout. Instead of creating `NSLayoutConstraint` …”. This is due to type checking and having a simpler and cleaner interface when compared to `NSLayoutConstraint`.
+`NSLayoutAnchor` was first introduced by Apple in iOS 9.0 and it is described as a *"factory class for creating layout constraint objects using a fluent API"*.  Apple's [documentation](https://developer.apple.com/documentation/uikit/nslayoutanchor)  also refers that `NSLayoutAnchor` usage is preferred when compared to `NSLayoutConstraint`: “use these constraints to programmatically define your layout using Auto Layout. Instead of creating `NSLayoutConstraint` …”. This is due to type checking and having a cleaner interface when compared to `NSLayoutConstraint`.
 
 Improvements related to type checking are based in Apple’s decision to split `NSLayoutAnchor` into three different concepts, being:
 
@@ -20,9 +20,9 @@ Improvements related to type checking are based in Apple’s decision to split `
 * `NSLayoutYAxisAnchor` for vertical constraints
 * `NSLayoutDimension` for width and height constraints
 
-Apple’s  [documentation](https://developer.apple.com/documentation/uikit/nslayoutanchor) also mentions that "*you never use the `NSLayoutAnchor` class directly. Instead, use one of its subclasses, based on the type of constraint you wish to create*". In short, you can never constrain anchors between the different subclasses shown above. But, you can still mess it up, as Apple states:
+Apple’s [documentation](https://developer.apple.com/documentation/uikit/nslayoutanchor) also mentions that "*you never use the `NSLayoutAnchor` class directly. Instead, use one of its subclasses, based on the type of constraint you wish to create*". In short, you can never constrain anchors between the different subclasses shown above. But, you can still mess it up, as Apple states:
 
-*"While the `NSLayoutAnchor` class provides additional type checking, it is still possible to create invalid constraints, For example, the compiler allows you to constrain one view's `leadingAnchor` with another view's `leftAnchor`, since they are both `NSLayoutXAxisAnchor` instances. However, Auto Layout does not allow constraints that mix leading and trailing attributes with left or right attributes"*
+> *"While the `NSLayoutAnchor` class provides additional type checking, it is still possible to create invalid constraints, For example, the compiler allows you to constrain one view's `leadingAnchor` with another view's `leftAnchor`, since they are both `NSLayoutXAxisAnchor` instances. However, Auto Layout does not allow constraints that mix leading and trailing attributes with left or right attributes"*
 
 First of all, take a look at the following code and try to identify some of `NSLayoutAnchor`’s boilerplate code.
 
@@ -63,15 +63,14 @@ According to this implementation, you should have found the following requiremen
 * You must activate constraints by setting its property `isActive` to `true` or by using `NSLayoutConstraint.activate()`;
 * You cannot set `UILayoutPriority` via a parameter and must instead create a variable.
 
-Within this article, you will learn how to address these issues. However, keep in mind that this only applies to  Swift.
+Within this article, you will learn how to address these issues. However, keep in mind that this only applies to Swift.
 
 ### TranslatesAutor... Yes, that long property you always set to false
 
 Here lies the first identified issue, and Apple is clear on why you always have to set it as false:
 
-"*If this property’s value is `true`, the system creates a set of constraints that duplicate the behavior specified by the view’s autoresizing mask. This also lets you modify the view’s size and location using the view’s `frame`, `bounds`, or `center` properties*
-
-*If you want to use Auto Layout to dynamically calculate the size and position of your view, you must set this property to `false`*""
+> "*If this property’s value is `true`, the system creates a set of constraints that duplicate the behavior specified by the view’s autoresizing mask. This also lets you modify the view’s size and location using the view’s `frame`, `bounds`, or `center` properties*
+> *If you want to use Auto Layout to dynamically calculate the size and position of your view, you must set this property to `false`*""
 
 This describes exactly what you want: use Auto Layout to dynamically calculate the size and position of your views. However you don’t want to write this huge property for every single view, not even inside a `forEach`.
 
