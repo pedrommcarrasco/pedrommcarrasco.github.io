@@ -69,7 +69,8 @@ Within this article, you will learn how to address these issues. However, keep i
 
 Here lies the first identified issue, and Apple is clear on why you always have to set it as false:
 
-> "*If this property’s value is `true`, the system creates a set of constraints that duplicate the behavior specified by the view’s autoresizing mask. This also lets you modify the view’s size and location using the view’s `frame`, `bounds`, or `center` properties*
+> "*If this property’s value is `true`, the system creates a set of constraints that duplicate the behavior specified by the view’s autoresizing mask. This also lets you modify the view’s size and location using the view’s `frame`, `bounds`, or `center` properties*.
+
 > *If you want to use Auto Layout to dynamically calculate the size and position of your view, you must set this property to `false`*""
 
 This describes exactly what you want: use Auto Layout to dynamically calculate the size and position of your views. However you don’t want to write this huge property for every single view, not even inside a `forEach`.
@@ -79,9 +80,9 @@ There are multiple approaches to solve this, but for now you will be improving `
 ```swift
 extension UIView {
 
-  func addSubviews(_ subviews: UIView ...) {
+  func addSubviews(_ views: UIView ...) {
 
-    subviews.forEach {
+    views.forEach {
       self.addSubview($0)
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -122,7 +123,7 @@ This will generate an error:
 
 ![ObjcGenericError](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/power-up-your-anchors/objcerror.png?raw=true)
 
-Prior to Swift 4, you were forced to extend each of `NSLayoutAnchor’`s subclasses. But now you can simply expose your extension to Objective-C.
+Prior to Swift 4, you were forced to extend each of `NSLayoutAnchor’`s subclasses, or constrain it, because it is a generic class. But now you can simply expose your extension to Objective-C.
 
 ```swift
 @objc extension NSLayoutAnchor
@@ -140,9 +141,9 @@ One way of solving this would be to set `isActive` to true by `default`. You can
 @objc extension NSLayoutAnchor {
 
   @discardableResult 
-  func constraint(equalTo anchor: NSLayoutAnchor, 
-                  with constant: CGFloat = 0.0, 
-                  isActive: Bool = true) -> NSLayoutConstraint {
+  func constrain(equalTo anchor: NSLayoutAnchor, 
+                 with constant: CGFloat = 0.0, 
+                 isActive: Bool = true) -> NSLayoutConstraint {
 
     let constraint = self.constraint(equalTo: anchor, constant: constant)
     constraint.isActive = isActive
@@ -174,10 +175,10 @@ While Apple's approach works, you can reduce the amount of functions in your int
 @objc extension NSLayoutAnchor {
 
   @discardableResult 
-  func constraint(_ relation: NSLayoutConstraint.Relation = .equal, 
-                  to anchor: NSLayoutAnchor, 
-                  with constant: CGFloat = 0.0, 
-                  isActive: Bool = true) -> NSLayoutConstraint {
+  func constrain(_ relation: NSLayoutConstraint.Relation = .equal, 
+                 to anchor: NSLayoutAnchor, 
+                 with constant: CGFloat = 0.0, 
+                 isActive: Bool = true) -> NSLayoutConstraint {
 
     let constraint: NSLayoutConstraint
 
@@ -302,7 +303,7 @@ You’ll now able to apply width and height constraints without any kind of rela
 
 ### Priorities
 
-You’re now going to simplify setting priorities. To set a constraint’s priority in the current model, with anchors, you would need to do the following:
+Now, you're going to simplify setting priorities. To set a constraint’s priority in the current model, with anchors, you would need to do the following:
 
 ```swift
 let bWidth = b.widthAnchor.constraint(equalToConstant: 50.0)
@@ -444,7 +445,7 @@ And now update your `constrain` functions with the following:
 @objc extension NSLayoutAnchor {
 
   @discardableResult
-  func constrain(_ relation: NSLayoutRelation = .equal,
+  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
                  to anchor: NSLayoutAnchor,
                  with constant: CGFloat = 0.0,
                  prioritizeAs priority: UILayoutPriority = .required,
