@@ -71,7 +71,7 @@ Here lies the first identified issue, and Apple is clear on why you always have 
 
 > "*If this property’s value is `true`, the system creates a set of constraints that duplicate the behavior specified by the view’s autoresizing mask. This also lets you modify the view’s size and location using the view’s `frame`, `bounds`, or `center` properties*.
 
-> *If you want to use Auto Layout to dynamically calculate the size and position of your view, you must set this property to `false`*""
+> *If you want to use Auto Layout to dynamically calculate the size and position of your view, you must set this property to `false`*"
 
 This describes exactly what you want: use Auto Layout to dynamically calculate the size and position of your views. However you don’t want to write this huge property for every single view, not even inside a `forEach`.
 
@@ -529,12 +529,12 @@ extension NSLayoutDimension {
 At the beginning of this article, you spotted some problems related to anchors. Now you can proudly check that you’ve developed solutions to each of them.
 
 - Having to set `translatesAutoresizingMaskIntoConstraints` to `false` for every view that isn’t loaded from a NIB
-  - You've created a new `addSubviews` function that supports sending multiple `UIView`
+  - [x] You've created a new `addSubviews` function that supports sending multiple `UIView`
 - Activating constraints by setting its property `isActive` to `true`, or using `NSLayoutConstraint.activate()`
 - Setting `UILayoutPriority` via parameter is not supported and requires you to create a variable.
-  - `NSLayoutAnchor` extensions work together to solve these two problems
+  - [x] `NSLayoutAnchor` extensions work together to solve these two problems
 - Interoperability has its costs to `NSLayoutAnchor` because it doesn't allow it to take advantage of some Swift capabilities.
-  - You've reduced the number of functions needed with an enum based approach and adopted default parameters in your interface.
+  - [x] You've reduced the number of functions needed with an enum based approach and adopted default parameters in your interface.
 
 Everything is looking good on paper. However, how does it look in practice?
 
@@ -606,7 +606,7 @@ As you can see, it is a lot easier to read and understand what each anchor is do
 
 ### Future Improvements
 
-While this will simplify the usage of AutoLayout programmatically, there are some details missing. The following functions aren’t covered:
+While this will simplify the usage of Auto Layout programmatically, there are some details missing. The following functions aren’t covered:
 
   * `constraintEqualToSystemSpacingBelow(NSLayoutYAxisAnchor, multiplier: CGFloat) `
   * `constraintGreaterThanOrEqualToSystemSpacingBelow(NSLayoutYAxisAnchor, multiplier: CGFloat) `
