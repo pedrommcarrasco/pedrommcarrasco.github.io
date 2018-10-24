@@ -529,12 +529,12 @@ extension NSLayoutDimension {
 At the beginning of this article, you spotted some problems related to anchors. Now you can proudly check that you’ve developed solutions to each of them.
 
 - Having to set `translatesAutoresizingMaskIntoConstraints` to `false` for every view that isn’t loaded from a NIB
-  - [x] You've created a new `addSubviews` function that supports sending multiple `UIView`
+  - **You've created a new `addSubviews` function that supports sending multiple `UIView`**
 - Activating constraints by setting its property `isActive` to `true`, or using `NSLayoutConstraint.activate()`
 - Setting `UILayoutPriority` via parameter is not supported and requires you to create a variable.
-  - [x] `NSLayoutAnchor` extensions work together to solve these two problems
+  - **`NSLayoutAnchor` extensions work together to solve these two problems**
 - Interoperability has its costs to `NSLayoutAnchor` because it doesn't allow it to take advantage of some Swift capabilities.
-  - [x] You've reduced the number of functions needed with an enum based approach and adopted default parameters in your interface.
+  - **You've reduced the number of functions needed with an enum based approach and adopted default parameters in your interface.**
 
 Everything is looking good on paper. However, how does it look in practice?
 
