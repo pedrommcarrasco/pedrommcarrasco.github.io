@@ -80,7 +80,7 @@ There are multiple approaches to solve this, but for now you will be improving `
 ```swift
 extension UIView {
 
-  func addSubviews(_ views: UIView ...) {
+  func addSubviewsUsingAutoLayout(_ views: UIView ...) {
 
     views.forEach {
       self.addSubview($0)
@@ -104,7 +104,7 @@ Now, instead of doing the following:
 You will now have:
 
 ```swift
-self.addSubviews(logoImageView, welcomeLabel, dismissButton)
+addSubviewsUsingAutoLayout(logoImageView, welcomeLabel, dismissButton)
 ```
 
 ### What about the remaining issues?
@@ -205,7 +205,7 @@ If you try to use it:
 let a = UIView()
 let b = UIView()
 
-a.addSubviews(b)
+a.addSubviewsUsingAutoLayout(b)
 
 // Constraint set as equal to a.topAnchor
 b.topAnchor.constrain(a.topAnchor)
@@ -529,7 +529,7 @@ extension NSLayoutDimension {
 At the beginning of this article, you spotted some problems related to anchors. Now you can proudly check that you’ve developed solutions to each of them.
 
 - Having to set `translatesAutoresizingMaskIntoConstraints` to `false` for every view that isn’t loaded from a NIB
-  - **You've created a new `addSubviews` function that supports sending multiple `UIView`**
+  - **You've created a new `addSubviewsUsingAutoLayout` function that supports sending multiple `UIView`**
 - Activating constraints by setting its property `isActive` to `true`, or using `NSLayoutConstraint.activate()`
 - Setting `UILayoutPriority` via parameter is not supported and requires you to create a variable.
   - **`NSLayoutAnchor` extensions work together to solve these two problems**
@@ -582,7 +582,7 @@ let welcomeLabel = UILabel()
 let dismissButton = UIButton()
         
 // Add Subviews & Set view's translatesAutoresizingMaskIntoConstraints to false
-addSubviews(logoImageView, welcomeLabel, dismissButton)
+addSubviewsUsingAutoLayout(logoImageView, welcomeLabel, dismissButton)
         
 // Set Constraints
 logoImageView.topAnchor.constrain(to: topAnchor, with: 12)
