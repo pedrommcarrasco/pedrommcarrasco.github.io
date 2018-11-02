@@ -32,7 +32,7 @@ Screen Saver based on the animations presented during **Apple Special Event** (O
 * Homebrew cask support (download via terminal, auto-updates, etc)
 * Custom clock
 
-## Instalation 📦
+## Installation 📦
 
 1. Close System Preferences
 2. [Click here to Download](https://github.com/pedrommcarrasco/Brooklyn/releases/download/1.0.0/Brooklyn.saver.zip)
