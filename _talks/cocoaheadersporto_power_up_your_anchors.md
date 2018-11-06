@@ -14,13 +14,15 @@ This presentation focused on this issue and was composed of two parts:
 * A workshop/live coding session where I implemented solutions to every identified issue with the `NSLayoutAnchor` interface
 
 ##  Video
-To be posted soon.
+
+<p align="center">
+    <a href="https://www.youtube.com/watch?v=ki2rKV5twdA">
+        <img src="https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/talks/cocoaheadsporto_power_up_your_anchors/youtube_thumbnail.png?raw=true" alt="Example"/>
+    </a>
+</p>
 
 ## Slides
 The slides used during this presentation are available [here](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/Talks-Content/CocoaHeadsPorto_PowerUp_Your_Anchors/powerup_your_anchors.key).
-
-## Code
-To be posted soon.
 
 ## Feedback
 Your feedback is extremely valuable to me. If you attended this talk, please provide it [here](https://goo.gl/forms/s6tJIVuIFou6NKof1). 🙏
