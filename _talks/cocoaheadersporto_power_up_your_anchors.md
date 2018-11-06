@@ -9,9 +9,9 @@ comments: true
 
 Auto Layout via code can easily create a lot of boilerplate if you don't improve its interface or use one of the amazing frameworks out there.
 
-This presentation focused on this issue and was composed of two parts:
+Bearing in mind, this presentation was divided into two parts:
 * A talk focused in showing the advantages of code when compared to XIBs & Storyboards, external dependencies, problems with the `NSLayoutAnchor` interface and what could be improved
-* A workshop/live coding session where I implemented solutions to every identified issue with the `NSLayoutAnchor` interface
+* A workshop/live coding session where I implemented solutions to every identified issue with the `NSLayoutAnchor` interface while keeping Apple's syntax
 
 ##  Video
 
