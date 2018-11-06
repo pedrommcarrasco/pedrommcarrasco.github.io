@@ -15,11 +15,7 @@ This presentation focused on this issue and was composed of two parts:
 
 ##  Video
 
-<p align="center">
-    <a href="https://www.youtube.com/watch?v=ki2rKV5twdA">
-        <img src="https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/talks/cocoaheadsporto_power_up_your_anchors/youtube_thumbnail.png?raw=true" alt="Example"/>
-    </a>
-</p>
+[![Thumbnail](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/talks/cocoaheadsporto_power_up_your_anchors/youtube_thumbnail.png?raw=true)](https://www.youtube.com/watch?v=ki2rKV5twdA)
 
 ## Slides
 The slides used during this presentation are available [here](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/Talks-Content/CocoaHeadsPorto_PowerUp_Your_Anchors/powerup_your_anchors.key).
