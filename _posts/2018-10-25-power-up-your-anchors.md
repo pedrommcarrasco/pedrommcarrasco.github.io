@@ -620,7 +620,7 @@ If requested, we can review this in a follow-up article.
 ### The End
 
 If you’ve managed to fully read this and reach the end, congratulations on powering your anchors!
-In the end, what’s your opinion of it? Did you know it already, or was it something new to you? Let me know, alongside with your questions, by sending feedback on [Twitter](https://twitter.com/) or here.
+In the end, what’s your opinion of it? Did you know it already, or was it something new to you? Let me know, alongside with your questions, by sending feedback on [Twitter](https://twitter.com/pedrommcarrasco) or here.
 
 Last but not least, I would like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [João Pereira](https://twitter.com/NSMyself), [José Figueiredo](https://twitter.com/ZeMiguelFig), [Pedro Eusébio](https://www.linkedin.com/in/peusebio/), [Tiago Silva](https://twitter.com/tiagomssilvaa) and [Farfetch](https://twitter.com/farfetch) for their outstanding support. ❤️
 
