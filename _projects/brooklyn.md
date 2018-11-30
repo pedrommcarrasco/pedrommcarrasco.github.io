@@ -26,7 +26,6 @@ Screen Saver based on the animations presented during **Apple Special Event** (O
 
 ### Upcoming ⌛
 
-* Add CI (TravisCI or CircleCI)
 * Isolate & edit every animation
 * Provide a preferences menu to select which animations will be displayed
 * Homebrew cask support (download via terminal, auto-updates, etc)
