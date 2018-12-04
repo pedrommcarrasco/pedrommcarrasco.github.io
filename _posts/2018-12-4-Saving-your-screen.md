@@ -20,6 +20,7 @@ Building your own screen saver in Swift can be a tricky task since the template 
 According to [*Quinn "The Eskimo!"*](https://forums.developer.apple.com/people/eskimo), an Apple Staff Member on the [Apple Developer Forums](https://forums.developer.apple.com/), it isn't safe to create a screen saver in Swift since the current architecture uses an  ["NSBundle-style plugin"](https://forums.developer.apple.com/message/268962#268962).
 
 > "The current screen saver architecture uses an NSBundle-style plug-in.  It’s not safe to create such plug-ins in Swift unless you control all the plug-ins and the app loading those plug-ins."
+
 > "Note that this does not apply to modern plug-ins, which are all app extensions.  An app extension can be safely written in Swift because it runs in its own process."
 
 Because of this, screen savers written in Swift need to be bundled with the required Swift standard libraries into the application package. While this may lead to maintainability issues that need to be addressed in every Swift release, it didn't stop the community from building screen savers written in Swift. As an example, you have both [Aerial](https://github.com/JohnCoates/Aerial) & [Brooklyn](https://github.com/pedrommcarrasco/Brooklyn). 
