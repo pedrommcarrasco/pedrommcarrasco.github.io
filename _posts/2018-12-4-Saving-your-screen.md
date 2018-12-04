@@ -33,7 +33,9 @@ You'll be aiming to develop a screen saver written exclusively in Swift. Design-
 
 By the end of this article, you'll achieve the following screen saver:
 
-![Goal](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/saving-your-screen/goal.gif?raw=true)
+<p align="center">
+    <img src="https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/saving-your-screen/goal.gif?raw=true" alt="Goal"/>
+</p>
 
 ## Setup
 
@@ -46,9 +48,11 @@ Xcode already has a screen saver template and you are going to use it to speed u
 3. Search for `Screen saver` and select it;
 4. Name it `SavingYourScreen` and choose its location.
 
-![Create Project](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/saving-your-screen/CreateProject.gif?raw=true)
+<p align="center">
+    <img src="https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/saving-your-screen/CreateProject.gif?raw=true" alt="Create Project"/>
+</p>
 
-Following this task, you'll notice Xcode generated `SavingYourScreen.m` and `SavingYourScreen.h`. But since you are going to develop it in Swift you can safely delete these two files. Once deleted, create a Swift file named `SavingYourScreen` and Xcode will present the following prompt:
+Following this, you'll notice Xcode generated `SavingYourScreen.m` and `SavingYourScreen.h`. But since you are going to develop it in Swift you can safely delete these two files. Once deleted, create a Swift file named `SavingYourScreen` and Xcode will present the following prompt:
 
 ![Bridging Header](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/saving-your-screen/BridgingHeader.png?raw=true)
 
