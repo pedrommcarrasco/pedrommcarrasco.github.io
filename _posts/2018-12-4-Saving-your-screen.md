@@ -52,7 +52,7 @@ Xcode already has a screen saver template and you are going to use it to speed u
     <img src="https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/saving-your-screen/CreateProject.gif?raw=true" alt="Create Project"/>
 </p>
 
-Following this, you'll notice Xcode generated `SavingYourScreen.m` and `SavingYourScreen.h`. But since you are going to develop it in Swift you can safely delete these two files. Once deleted, create a Swift file named `SavingYourScreen` and Xcode will present the following prompt:
+Following this, you'll notice Xcode generated `SavingYourScreen.m` and `SavingYourScreen.h`. But since you are going to develop it in Swift you can safely delete these two files. Once deleted, create a Swift file named `SaverView` and Xcode will present the following prompt:
 
 ![Bridging Header](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/saving-your-screen/BridgingHeader.png?raw=true)
 
