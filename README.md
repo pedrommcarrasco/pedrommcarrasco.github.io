@@ -1,8 +1,6 @@
 # pedrommcarrasco.github.io
 
-This website was based on the mmistakes's jekyll theme Basically Basic (https://github.com/mmistakes/jekyll-theme-basically-basic).
-
-
+This website was based on mmistakes's jekyll theme Basically Basic (https://github.com/mmistakes/jekyll-theme-basically-basic).
 
 ## Articles Source Code Index
 
