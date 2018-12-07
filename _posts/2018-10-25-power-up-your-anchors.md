@@ -8,7 +8,7 @@ tags:
 layout: post
 ---
 
-Programmatically done Auto Layout is still the preferred way of implementing views by a lot of developers. While there amazing open-source frameworks, most of them differ from Apple’s anchor syntax. Therefore, by adding them to your project, you’ll raise the entry level complexity of your project and increase its learning curve. In this article, you’ll learn how to avoid adding an external dependency and create your own layer above `NSLayoutAnchor` to solve some of its issues.
+Programmatically done Auto Layout is still the preferred way of implementing views by a lot of developers. While there are amazing open-source frameworks, most of them differ from Apple’s anchor syntax. Therefore, by adding them to your project, you’ll raise the entry level complexity of your project and increase its learning curve. In this article, you’ll learn how to avoid adding an external dependency and create your own layer above `NSLayoutAnchor` to solve some of its issues.
 
 ### Introduction
 
