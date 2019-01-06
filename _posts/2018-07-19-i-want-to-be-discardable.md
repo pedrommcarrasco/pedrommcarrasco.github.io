@@ -33,7 +33,7 @@ This mark is available since iOS 8.0.
 
 ## Ignore this, Ignore that, I want those
 
-Previously you've used '`_ =`' to ignore a function result, but this time, you are going to do that by using `@discardableResult`. To do so, you'll `@discardableResult` to the previous function. Resulting in:
+Previously you've used '`_ =`' to ignore a function result, but this time, you are going to do that by using `@discardableResult`. To do so, you'll add `@discardableResult` to the previous function. Resulting in:
 
 <script src="https://gist.github.com/pedrommcarrasco/3314a3485b42ad2ed1573cf322866876.js"></script>
 
