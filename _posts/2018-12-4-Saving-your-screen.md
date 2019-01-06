@@ -62,110 +62,21 @@ As you won't work with Swift & Objective-C interoperability, just select `Don't 
 
 To start things off, import the `ScreenSaver` framework and subclass `ScreenSaverView` as follows:
 
-```swift
-import ScreenSaver
-
-// MARK: - SaverView
-final class SaverView: ScreenSaverView {
-
-  // MARK: Initialization
-  override init?(frame: NSRect, isPreview: Bool) {
-    super.init(frame: frame, isPreview: isPreview)
-
-    configure()
-}
-
-  required init?(coder decoder: NSCoder) {
-    super.init(coder: decoder)
-
-    configure()
-  }
-}
-
-// MARK: - Configuration
-private extension SaverView {
-
-  func configure() {
-    addSubviews()
-    defineConstraints()
-    setupSubviews()
-  }
-
-  func addSubviews() {}
-
-  func defineConstraints() {}
-
-  func setupSubviews() {}
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/3dc7d6fae2f861f917ed0885c3c2b80a.js"></script>
 
 With the skeleton ready, it is time to start working on the real implementation,  starting by implementing the component required to display an emoji. 
 
 While in iOS you could use an `UILabel` by importing `UIKit`, in macOS you don't have access to it. Instead, `AppKit` provides a component called `NSTextField`. Unfortunately, this component behaviour is very similar to its iOS counterpart, `UITextField`. This means, it supports interaction & typing, which you don't want and in order to remove these functionalities, you're going to subclass `NSTextField` as follows:
 
-```swift
-import AppKit
-
-// MARK: - Label
-final class Label: NSTextField {
-
-  // MARK: Initialization
-  override init(frame frameRect: NSRect) {
-    super.init(frame: frameRect)
-
-    configure()
-  }
-
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-
-    configure()
-  }
-}
-
-// MARK: - Configuration
-private extension Label {
-
-  func configure() {
-    isBezeled = false
-    isSelectable = false
-    drawsBackground = false
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/3c98f5bc69965454012dd9ebe3ec0a9a.js"></script>
 
 Now, create an instance of it in your view by adding the following code above your initialization methods:
 
-```swift
-// MARK: Outlets
-private let emojiLabel: Label = {
-  let label = Label()
-  label.textColor = .white
-  label.translatesAutoresizingMaskIntoConstraints = false
+<script src="https://gist.github.com/pedrommcarrasco/f0104a17876a07c09369e5f3abb2b0d0.js"></script>
 
-  return label
-}()
-```
 Finally, implement `addSubviews`, `defineConstraints` and `setupSubviews` as follows:
 
-```swift
-func addSubviews() {
-  addSubview(emojiLabel)
-}
-
-func defineConstraints() {
-  NSLayoutConstraint.activate(
-    [
-      emojiLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-      emojiLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-    ]
-  )
-}
-
-func setupSubviews() {
-  emojiLabel.font = NSFont.systemFont(ofSize: bounds.height/5)
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/f60e6b250f72fef57db447d6f9df9474.js"></script>
 
 Everything should look very familiar to you and in fact, it is! Most of the code until now could be used in iOS except for some minor differences between `UIKit` and `AppKit`.
 
@@ -173,13 +84,7 @@ However, you won't be getting the result you are aiming for with it. While you'v
 
 Start by creating a `String` extension with the following method:
 
-```swift
-static var randomEmoji: String? {
-  guard let randomEmojiAscii = [UInt32](0x1F601...0x1F64F).randomElement() else { return nil }
-
-  return UnicodeScalar(randomEmojiAscii)?.description
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/880c16ed6f8b763d705f7dc4d7856dc2.js"></script>
 
 With it, you can easily retrieve an emoji but what about changing it every second? You could easily implement a timer but the `ScreenSaverView` has some tools under its belt. According to Apple's [documentation](https://developer.apple.com/documentation/screensaver/screensaverview), it has the following methods:
 * `startAnimation()` - *"Activates the periodic timer that animates the screen saver."*
@@ -190,96 +95,11 @@ These three methods together provide you a timer embed into `ScreenSaverView`'s 
 
 In order to use it, start by adding the following method to your view. It will be responsible for updating the emoji presented on your screen:
 
-```swift
-// MARK: - Update
-private extension SaverView {
-
-  func updateContent() {
-    guard let emoji = String.randomEmoji else { return }
-
-    emojiLabel.stringValue = emoji
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/c5f39e4f7609e1e54d4963f05d4b1271.js"></script>
 
 Now, you just have to override `animateOneFrame()` and call `updateContent()` after `super.animateOneFrame()`. In the end, your view should look as follows:
 
-```swift
-// MARK: - SaverView
-final class SaverView: ScreenSaverView {
-
-  // MARK: Outlets
-  private let emojiLabel: Label = {
-    let label = Label()
-    label.textColor = .white
-    label.translatesAutoresizingMaskIntoConstraints = false
-
-    return label
-  }()
-
-  // MARK: Initialization
-  override init?(frame: NSRect, isPreview: Bool) {
-    super.init(frame: frame, isPreview: isPreview)
-
-    configure()
-  }
-
-  required init?(coder decoder: NSCoder) {
-    super.init(coder: decoder)
-
-    configure()
-  }
-}
-
-// MARK: - Lifecycle
-extension SaverView {
-
-  override func animateOneFrame() {
-    super.animateOneFrame()
-
-    updateContent()
-  }
-}
-
-// MARK: - Configuration
-private extension SaverView {
-
-  func configure() {
-    animationTimeInterval = 1
-
-    addSubviews()
-    defineConstraints()
-    setupSubviews()
-  }
-
-  func addSubviews() {
-    addSubview(emojiLabel)
-  }
-
-  func defineConstraints() {
-    NSLayoutConstraint.activate(
-      [
-        emojiLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-        emojiLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-      ]
-    )
-  }
-
-  func setupSubviews() {
-    emojiLabel.font = NSFont.systemFont(ofSize: bounds.height/5)
-  }
-}
-
-// MARK: - Update
-private extension SaverView {
-
-  func updateContent() {
-    guard let emoji = String.randomEmoji else { return }
-
-    emojiLabel.stringValue = emoji
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/0b31150ba8415f73aee6c021188c84c1.js"></script>
 
 ## Time to get your hands dirty
 
