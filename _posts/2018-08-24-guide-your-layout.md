@@ -16,7 +16,9 @@ actions:
 
 How would you achieve the following screen? 
 
-![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/guide-your-layout/goal.jpg?raw=true)
+<p align="center">
+<img src="https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/guide-your-layout/goal.jpg?raw=true" alt="Goal"/>
+</p>
 
 You can easily spot an `UIImageView` and an `UILabel` centered together. 
 
@@ -50,45 +52,19 @@ With all the knowledge acquired, you are now able to solve the initial problem u
 
 To start off, if you were using an `UIView` for encapsulation, you would start by creating it and adding it to the hierarchy:
 
-```swift
-let containerView = UIView()
-view.addSubview(containerView)
-```
+<script src="https://gist.github.com/pedrommcarrasco/fedb314239e484fdc2e7f9429a3786c8.js"></script>
 
 This time, since you're using `UILayoutGuide`, you'll need to create an instance of it. Then, instead of adding it by calling `addSubview(UIView)`, you'll be using `addLayoutGuide(UILayoutGuide)`.
 
-```swift
-let layoutGuide = UILayoutGuide()
-view.addLayoutGuide(layoutGuide)
-```
+<script src="https://gist.github.com/pedrommcarrasco/a62604dbb5b4947842ca558a9264817c.js"></script>
 
 Notice that, since `UILayoutGuide` isn't a member of the view hierarchy you'll be adding your views to `view` instead of `layoutGuide`.
 
-```swift
-[photoImageView, introLabel].forEach { self.view.addSubview($0) }
-```
+<script src="https://gist.github.com/pedrommcarrasco/5a56b64899e6a9dbe1f61c312ca21b97.js"></script>
 
 You're now done with the `UILayoutGuide`'s initial setup and with so, it's time to move to constraints. In the end, it is similar to what you would do with an `UIView`.
 
-```swift
-NSLayoutConstraint.activate(
-  [
-    layoutGuide.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-    layoutGuide.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-    layoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                
-    photoImageView.topAnchor.constraint(equalTo: layoutGuide.topAnchor),     
-    photoImageView.centerXAnchor.constraint(equalTo: layoutGuide.centerXAnchor),
-    photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor),
-    photoImageView.heightAnchor.constraint(equalToConstant: 250),
-                
-    introLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 16),
-    introLabel.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor),
-    introLabel.leadingAnchor.constraint(equalTo: photoImageView.leadingAnchor),
-    introLabel.trailingAnchor.constraint(equalTo: photoImageView.trailingAnchor)
-  ]
-)
-```
+<script src="https://gist.github.com/pedrommcarrasco/11ad48d9a90e66d5586c01b43b14f261.js"></script>
 
 Keep in mind that `photoImageView` and `introLabel` setup isn't in the scope of this article. Still, if you're interested in it, take a look [here](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/tree/master/Articles-Source-Code/Guide%20your%20layout/GuideYourLayout.playground).
 
