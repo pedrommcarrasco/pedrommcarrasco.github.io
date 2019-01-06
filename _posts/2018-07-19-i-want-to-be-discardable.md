@@ -19,13 +19,7 @@ Ever wanted to ignore a value returned from a function but if you do so you'll e
 
 First of all, take the following function as an example for this article.
 
-```swift
-func example() -> String {
-  let description = "This is an example"
-  print(description)
-  return description
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/1953479473615c270c86bed56d5185ad.js"></script>
 
 In most scenarios, you would use '`_ = example()`' to silence the warning. While this is correct, adding '`_ =`' every single time would create a lot of boilerplate code and your public interface wouldn't seem well designed. Keep in mind that changing the function to `Void` isn't an option for this specific example because we might want to use `example()`'s return in some scenario.
 
@@ -43,19 +37,9 @@ Previously you've used '`_ =`' to ignore a function result, but this time, you a
 
 <script src="https://gist.github.com/pedrommcarrasco/3314a3485b42ad2ed1573cf322866876.js"></script>
 
-Now, invoke your function like this:
+Now, invoke your function, compile and you'll verify that Xcode didn't show any kind of warning this time. But what if you want to use the value returned? 
 
-```swift
-example()
-```
-
-Compile and you'll verify that Xcode didn't show any kind of warning this time. But what if you want to use the value returned? 
-
-```swift
-var value = example()
-value.append(" with discardable")
-print(value)
-```
+<script src="https://gist.github.com/pedrommcarrasco/cb2d294460eadd51131ff5138c58932e.js"></script>
 
 If you run the code above you'll see that "This is an example" is printed followed by "This is an example with discardable", meaning that you've successfully stored the result of `example()` in  `value`, appended " with discardable to it" and finally printed it.
 
@@ -63,15 +47,7 @@ If you run the code above you'll see that "This is an example" is printed follow
 
 You don't have to look too far to find some real-world examples. Take a look at Apple's `NSLayoutAnchor` for example. If you notice when you apply a constraint with anchors, in case you need to save it locally to define a priority, you could easily do:
 
-```swift
-let a = UIView()
-let b = UIView()
-
-a.topAnchor.constraint(equalTo: b.topAnchor)
-
-let aBottom = a.bottomAnchor.constraint(equalTo: b.bottomAnchor)
-aBottom.priority = .defaultHigh
-```
+<script src="https://gist.github.com/pedrommcarrasco/abc6a3baf8c007bd207e5ed9f447334c.js"></script>
 
 If you don't want use the `NSLayoutConstraint` returned, you're also allowed to ignore it without Xcode displaying any warning.
 
