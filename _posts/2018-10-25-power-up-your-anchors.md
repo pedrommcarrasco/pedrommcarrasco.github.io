@@ -26,36 +26,7 @@ Apple’s [documentation](https://developer.apple.com/documentation/uikit/nslayo
 
 First of all, take a look at the following code and try to identify some of `NSLayoutAnchor`’s boilerplate code.
 
-```swift
-// Subviews
-let logoImageView = UIImageView()
-let welcomeLabel = UILabel()
-let dismissButton = UIButton()
-
-// Add Subviews & Set view's translatesAutoresizingMaskIntoConstraints to false
-[logoImageView, welcomeLabel, dismissButton].forEach {
-    self.addSubview($0)
-    $0.translatesAutoresizingMaskIntoConstraints = false 
-}
-
-// Set Constraints
-logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
-logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-logoImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-logoImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
-dismissButton.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 12).isActive = true
-dismissButton.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12).isActive = true
-dismissButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-let dismissButtonWidth = dismissButton.widthAnchor.constraint(equalToConstant: 320)
-dismissButtonWidth.priority = UILayoutPriority(UILayoutPriority.defaultHigh.rawValue + 1)
-dismissButtonWidth.isActive = true
-
-welcomeLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 12).isActive = true
-welcomeLabel.bottomAnchor.constraint(greaterThanOrEqualTo: dismissButton.topAnchor, constant: 12).isActive = true
-welcomeLabel.leadingAnchor.constraint(equalTo: dismissButton.leadingAnchor).isActive = true
-welcomeLabel.trailingAnchor.constraint(equalTo: dismissButton.trailingAnchor).isActive = true
-```
+<script src="https://gist.github.com/pedrommcarrasco/c6957ba7fcd8519d82d73f9d1b8275c7.js"></script>
 
 According to this implementation, you should have found the following requirements:
 
@@ -77,47 +48,23 @@ This describes exactly what you want: use Auto Layout to dynamically calculate t
 
 There are multiple approaches to solve this, but for now you will be improving `addSubview` and adding a side-effect to it. To do so, create an `UIView` extension with the following code:
 
-```swift
-extension UIView {
-
-  func addSubviewsUsingAutoLayout(_ views: UIView ...) {
-
-    views.forEach {
-      self.addSubview($0)
-      $0.translatesAutoresizingMaskIntoConstraints = false
-    }
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/be50ad4da9a743c791ee07fbd39ee970.js"></script>
 
 With this code, you will be able to send multiple views, set them all as subviews and set each one’s `translatesAutoresizingMaskIntoConstraints` to false all at once.
 
 Now, instead of doing the following:
 
-```swift
-[logoImageView, welcomeLabel, dismissButton].forEach {
-    self.addSubview($0)
-    $0.translatesAutoresizingMaskIntoConstraints = false 
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/ea6052781799fcefc3ed2f2ca8bceea4.js"></script>
 
 You will now have:
 
-```swift
-addSubviewsUsingAutoLayout(logoImageView, welcomeLabel, dismissButton)
-```
+<script src="https://gist.github.com/pedrommcarrasco/fe03e548c9b916b11278188bc192a2e5.js"></script>
 
 ### What about the remaining issues?
 
 Start by extending `NSLayoutAnchor` as follows:
 
-```swift
-extension NSLayoutAnchor {
-
-  func test() {}
-
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/190b5a091917d1307c26f0ef0b64e85c.js"></script>
 
 This will generate an error:
 
@@ -125,9 +72,7 @@ This will generate an error:
 
 Prior to Swift 4, you were forced to extend each of `NSLayoutAnchor’`s subclasses, or constrain it, because it is a generic class. But now you can simply expose your extension to Objective-C.
 
-```swift
-@objc extension NSLayoutAnchor
-```
+<script src="https://gist.github.com/pedrommcarrasco/9655a5c2ccd468ad6ea6ae98e01d046b.js"></script>
 
 If you try to compile this, you will notice that the error disappears. Your extension is now ready to use your own code, and that is exactly what you’re going to do.
 
@@ -137,20 +82,7 @@ Setting `isActive` in every single anchor is excruciating. Even though `NSLayout
 
 One way of solving this would be to set `isActive` to true by `default`. You can achieve this with the following:
 
-```swift
-@objc extension NSLayoutAnchor {
-
-  @discardableResult 
-  func constrain(equalTo anchor: NSLayoutAnchor, 
-                 with constant: CGFloat = 0.0, 
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint = self.constraint(equalTo: anchor, constant: constant)
-    constraint.isActive = isActive
-    return constraint
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/394200fedad867b63f504f149301afe4.js"></script>
 
 This function uses a Swift capability called default argument. It allows `isActive` to be called as an optional argument. By default, it will always be set to `true`. But in case you don’t want it active, you can set it to `false`.
 
@@ -171,60 +103,13 @@ According to Apple's [documentation](https://developer.apple.com/documentation/u
 
 While Apple's approach works, you can reduce the amount of functions in your interface with an enumeration approach for `NSLayoutConstraint.Relation` as in the following code:
 
-```swift
-@objc extension NSLayoutAnchor {
+<script src="https://gist.github.com/pedrommcarrasco/0d5d088b47c627b9509183503c745b51.js"></script>
 
-  @discardableResult 
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal, 
-                 to anchor: NSLayoutAnchor, 
-                 with constant: CGFloat = 0.0, 
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalTo: anchor, constant: constant)
-
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualTo: anchor, constant: constant)
-
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualTo: anchor, constant: constant)
-    }
-
-    constraint.isActive = isActive
-      
-    return constraint
-  }
-}
-```
 If you try to use it:
 
-```swift
-let a = UIView()
-let b = UIView()
+<script src="https://gist.github.com/pedrommcarrasco/04d59262eea41b9ddc4430d029eedcab.js"></script>
 
-a.addSubviewsUsingAutoLayout(b)
-
-// Constraint set as equal to a.topAnchor
-b.topAnchor.constrain(a.topAnchor)
-
-// Constraint set as greater than or equal to a.bottomAnchor
-b.bottomAnchor.constrain(.greaterThanOrEqual, to: a.bottomAnchor)
-
-// Constraint set as less than or equal to a.bottomAnchor
-b.leadingAnchor.constrain(.lessThanOrEqual, to: a.leadingAnchor)
-
-```
-
-Everything seems to be working well. But what if you try to apply a width constraint based on a constant? Add the following line of code to the previous example and rebuild:
-
-```swift
-b.widthAnchor.constrain(to: 50.0)
-```
-
-Oh no, you trigger another error:
+Everything seems to be working well. But what if you try to apply a width constraint based on a constant? Add `b.widthAnchor.constrain(to: 50.0)` to the previous example and rebuild. Oh no, you trigger another error:
 
 ![MissingFunction](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/posts/power-up-your-anchors/missingfunction.png?raw=true)
 
@@ -246,58 +131,7 @@ To avoid missing cases that already exist, you should also have the option to ap
 
 In order to address this, you must enable this feature only for `NSLayoutDimension`’s anchors. Therefore, you are going to extend `NSLayoutDimension` with the following code:
 
-```swift
-extension NSLayoutDimension {
-
-  @discardableResult
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
-                 to anchor: NSLayoutDimension
-                 with constant: CGFloat = 0.0,
-                 multiplyBy multiplier: CGFloat = 1.0,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalTo: anchor, multiplier: multiplier, constant: constant)
-            
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
-            
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
-        }
-
-    constraint.isActive = isActive
-
-    return constraint
-  }
-    
-  @discardableResult
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
-                 to constant: CGFloat = 0.0,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalToConstant: constant)
-
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualToConstant: constant)
-
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualToConstant: constant)
-    }
-
-    constraint.isActive = isActive
-
-    return constraint
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/550c1a0828d3245079382d318b298906.js"></script>
 
 You’ll now able to apply width and height constraints without any kind of relation to another anchor.
 
@@ -305,123 +139,19 @@ You’ll now able to apply width and height constraints without any kind of rela
 
 Now, you're going to simplify setting priorities. To set a constraint’s priority in the current model, with anchors, you would need to do the following:
 
-```swift
-let bWidth = b.widthAnchor.constraint(equalToConstant: 50.0)
-bWidth.priority = .defaultHigh
-// or if you want between .defaultHigh and .required 👇 🤮
-bWidth.priority = UILayoutPriority(UILayoutPriority.defaultHigh.rawValue + 1)
-```
+<script src="https://gist.github.com/pedrommcarrasco/1819ab318af946b29b0e5998b2d666a1.js"></script>
 
 A good way to avoid being forced to assign the constraint to a property is adding this option to your functions. Also, with a default value of `.required`, you don’t need to type it in most scenarios.
 
 Replace your functions with the following:
 
-```swift
-@objc extension NSLayoutAnchor {
-
-  @discardableResult
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
-                 to anchor: NSLayoutAnchor,
-                 with constant: CGFloat = 0.0,
-                 prioritizeAs priority: UILayoutPriority = .required,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalTo: anchor, constant: constant)
-
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualTo: anchor, constant: constant)
-
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualTo: anchor, constant: constant)
-    }
-
-    constraint.priority = priority
-    constraint.isActive = isActive
-
-    return constraint
-  }
-}
-
-extension NSLayoutDimension {
-    
-  @discardableResult
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
-                 to anchor: NSLayoutDimension
-                 with constant: CGFloat = 0.0,
-                 multiplyBy multiplier: CGFloat = 1.0,
-                 prioritizeAs priority: UILayoutPriority = .required,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalTo: anchor, multiplier: multiplier, constant: constant)
-            
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
-            
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
-        }
-	
-    constraint.priority = priority
-    constraint.isActive = isActive
-
-    return constraint
-  }
-
-  @discardableResult
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
-                 to constant: CGFloat = 0.0,
-                 prioritizeAs priority: UILayoutPriority = .required,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalToConstant: constant)
-
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualToConstant: constant)
-
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualToConstant: constant)
-    }
-
-    constraint.priority = priority
-    constraint.isActive = isActive
-
-    return constraint
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/b4dbb92ff435df63dfc5f8861ea3bff8.js"></script>
 
 However, what if you wanted a priority between `.defaultHigh` and `.required`? The current way doesn’t look very clean. In order to improve it, you are going to extend `NSLayoutPriority` with the following:
 
-```swift
-extension UILayoutPriority {
+<script src="https://gist.github.com/pedrommcarrasco/866dbdf718c28e7a94bad4fab68c3810.js"></script>
 
-  static func +(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
-    return UILayoutPriority(lhs.rawValue + rhs)
-  }
-
-  static func -(lhs: UILayoutPriority, rhs: Float) -> UILayoutPriority {
-    return UILayoutPriority(lhs.rawValue - rhs)
-  }
-}
-```
-
-And now you’ll be able to do the following:
-
-```swift
-bWidth.priority = .defaultHigh + 1 // 😍
-```
+And now you’ll be able to do `bWidth.priority = .defaultHigh + 1` .
 
 ### DRY
 
@@ -431,98 +161,11 @@ You are currently repeating yourself when setting `isActive` and `priority`. In 
 
 Start by adding the following function to your extension:
 
-```swift
-func set(priority: UILayoutPriority, isActive: Bool) {
-	
-    self.priority = priority
-    self.isActive = isActive
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/222e09cc794f51c203e7262e654939c6.js"></script>
 
 And now update your `constrain` functions with the following:
 
-```swift
-@objc extension NSLayoutAnchor {
-
-  @discardableResult
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
-                 to anchor: NSLayoutAnchor,
-                 with constant: CGFloat = 0.0,
-                 prioritizeAs priority: UILayoutPriority = .required,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    var constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalTo: anchor, constant: constant)
-
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualTo: anchor, constant: constant)
-
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualTo: anchor, constant: constant)
-    }
-      
-    constraint.set(priority: priority, isActive: isActive)
-
-    return constraint
-  }
-}
-
-extension NSLayoutDimension {
-    
-  @discardableResult
-  func constrain(_ relation: NSLayoutConstraint.Relation = .equal,
-                 to anchor: NSLayoutDimension
-                 with constant: CGFloat = 0.0,
-                 multiplyBy multiplier: CGFloat = 1.0,
-                 prioritizeAs priority: UILayoutPriority = .required,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    let constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalTo: anchor, multiplier: multiplier, constant: constant)
-            
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
-            
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualTo: anchor, multiplier: multiplier, constant: constant)
-        }
-	
-    constraint.set(priority: priority, isActive: isActive)
-
-    return constraint
-  }
-
-  @discardableResult
-  func constrain(_ relation: NSLayoutRelation = .equal,
-                 to constant: CGFloat = 0.0,
-                 prioritizeAs priority: UILayoutPriority = .required,
-                 isActive: Bool = true) -> NSLayoutConstraint {
-
-    var constraint: NSLayoutConstraint
-
-    switch relation {
-      case .equal:
-        constraint = self.constraint(equalToConstant: constant)
-
-      case .greaterThanOrEqual:
-        constraint = self.constraint(greaterThanOrEqualToConstant: constant)
-
-      case .lessThanOrEqual:
-        constraint = self.constraint(lessThanOrEqualToConstant: constant)
-    }
-      
-    constraint.set(priority: priority, isActive: isActive)
-
-	return constraint	
-  }
-}
-```
+<script src="https://gist.github.com/pedrommcarrasco/0866f2260656c8690b5e4ec02a5261de.js"></script>
 
 ### What have you done?
 
@@ -542,65 +185,11 @@ Everything is looking good on paper. However, how does it look in practice?
 
 Before showcasing your new and fresh powered-up anchors, take another look at the initial example shown in this article:
 
-```swift
-// Subviews
-let logoImageView = UIImageView()
-let welcomeLabel = UILabel()
-let dismissButton = UIButton()
-
-// Add Subviews & Set view's translatesAutoresizingMaskIntoConstraints to false
-[logoImageView, welcomeLabel, dismissButton].forEach { 
-  self.addSubview($0)
-  $0.translatesAutoresizingMaskIntoConstraints = false 
-}
-
-// Set Constraints
-logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
-logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-logoImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-logoImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
-dismissButton.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 12).isActive = true
-dismissButton.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12).isActive = true
-dismissButton.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-let dismissButtonWidth = dismissButton.widthAnchor.constraint(equalToConstant: 320)
-dismissButtonWidth.priority = UILayoutPriority(UILayoutPriority.defaultHigh.rawValue + 1)
-dismissButtonWidth.isActive = true
-
-welcomeLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 12).isActive = true
-welcomeLabel.bottomAnchor.constraint(greaterThanOrEqualTo: dismissButton.topAnchor, constant: 12).isActive = true
-welcomeLabel.leadingAnchor.constraint(equalTo: dismissButton.leadingAnchor).isActive = true
-welcomeLabel.trailingAnchor.constraint(equalTo: dismissButton.trailingAnchor).isActive = true
-```
+<script src="https://gist.github.com/pedrommcarrasco/c6957ba7fcd8519d82d73f9d1b8275c7.js"></script>
 
 Now you can achieve the same result in a much cleaner way with your extensions:
 
-```swift
-// Subviews
-let logoImageView = UIImageView()
-let welcomeLabel = UILabel()
-let dismissButton = UIButton()
-        
-// Add Subviews & Set view's translatesAutoresizingMaskIntoConstraints to false
-addSubviewsUsingAutoLayout(logoImageView, welcomeLabel, dismissButton)
-        
-// Set Constraints
-logoImageView.topAnchor.constrain(to: topAnchor, with: 12)
-logoImageView.centerXAnchor.constrain(to: centerXAnchor)
-logoImageView.widthAnchor.constrain(to: 50)
-logoImageView.heightAnchor.constrain(to: 50)
-        
-dismissButton.leadingAnchor.constrain(.greaterThanOrEqual, to: leadingAnchor, with: 12)
-dismissButton.trailingAnchor.constrain(.lessThanOrEqual, to: trailingAnchor, with: -12)
-dismissButton.bottomAnchor.constrain(to: bottomAnchor)
-dismissButton.widthAnchor.constrain(to: 320, prioritizeAs: .defaultHigh + 1)
-        
-welcomeLabel.topAnchor.constrain(to: logoImageView.bottomAnchor, with: 12)
-welcomeLabel.bottomAnchor.constrain(.greaterThanOrEqual, to: dismissButton.topAnchor, with: 12)
-welcomeLabel.leadingAnchor.constrain(to: dismissButton.leadingAnchor)
-welcomeLabel.trailingAnchor.constrain(to: dismissButton.trailingAnchor)
- 
-```
+<script src="https://gist.github.com/pedrommcarrasco/3329b41081d8798c837852e17d87a78e.js"></script>
 
 As you can see, it is a lot easier to read and understand what each anchor is doing. You were also able to decrease the amount of code you needed to write.
 
