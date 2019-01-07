@@ -2,9 +2,9 @@
 title: "Power-Up Your Anchors"
 image: /assets/posts/power-up-your-anchors/banner.jpg
 categories:
-- Auto Layout
+- Guide
 tags:
-- UI
+- Auto Layout
 layout: post
 ---
 

@@ -2,10 +2,9 @@
 title: "I Want To Be Discardable"
 image: /assets/posts/i-want-to-be-discardable/banner.jpg
 categories:
-- tips and tricks
+- Tips & Tricks
 tags:
-- Chaining
-- Discard
+- Language Feature
 layout: post
 actions:
     - label: "Source Code"

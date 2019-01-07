@@ -2,11 +2,9 @@
 title: "Guide Your Layout"
 image: /assets/posts/guide-your-layout/banner.jpg
 categories:
-- Auto Layout
-tags:
-- UI
 - Tips & Tricks
-- Performance
+tags:
+- Auto Layout
 layout: post
 actions:
 - label: "Source Code"

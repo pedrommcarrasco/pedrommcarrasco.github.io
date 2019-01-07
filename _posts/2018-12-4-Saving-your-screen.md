@@ -2,10 +2,9 @@
 title: "Saving Your Screen"
 image: /assets/posts/saving-your-screen/banner.jpg
 categories:
-- macOS
+- Guide
 tags:
-- UI
-- Screen Saver
+- macOS
 layout: post
 actions:
     - label: "Source Code"
