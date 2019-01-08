@@ -134,10 +134,10 @@ Tests' code quality must be as high as in your application as you'll be spending
 
 For further reading, [Paul](https://twitter.com/twostraws) recommends ["XUnit Test Patterns: Refactoring Test Code"](http://xunitpatterns.com/) by Gerard Meszaros.
 
-Because without them this wouldn't be possible, a huge shoutout to [José Figueiredo](https://twitter.com/ZeMiguelFig), [Paul Hudson](https://twitter.com/twostraws), [Rodrigo López-Romero](https://twitter.com/rlrg_6) and [Tiago Martinho](https://twitter.com/martinho_t) for joining me. :raised_hands: 
+Because without them this wouldn't be possible, a huge shoutout to [José Figueiredo](https://twitter.com/ZeMiguelFig), [Paul Hudson](https://twitter.com/twostraws), [Rodrigo López-Romero](https://twitter.com/rlrg_6) and [Tiago Martinho](https://twitter.com/martinho_t) for joining me. 🙌
 
 I would also like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Heitor Ferreira](https://www.linkedin.com/in/heitormpf) and [Tiago Silva](https://twitter.com/tiagomssilvaa) for their outstanding support and [João Pereira](https://twitter.com/NSMyself) for giving the "Let's Talk About" original idea. ❤️
 
-Last but not least, if you have any subject you would like to see covered and/or discussed, let me know here or on [Twitter](https://twitter.com/pedrommcarrasco)! :eyes:
+Last but not least, if you have any subject you would like to see covered and/or discussed, let me know here or on [Twitter](https://twitter.com/pedrommcarrasco)! 👀
 
 Thanks for reading. ✨
