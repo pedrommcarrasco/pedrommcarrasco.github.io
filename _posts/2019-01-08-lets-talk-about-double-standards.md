@@ -112,9 +112,7 @@ Notice the pattern? The code responsible for loading a JSON file doesn't add any
 
 <script src="https://gist.github.com/pedrommcarrasco/db355b8285b5b4a2467a4d2b097679c7.js"></script>
 
-These tests exist to validate how the `screenStructureManager` determines and updates the screen structure. Therefore, you can encapsulate any supplementary logic in functions with a well-defined interface. Subsequently, you'll reduce the lines of code in your test file and its readability.
-
-The DRY principle plays a big role both in your application's code and its tests in order to avoid repeating yourself.
+These tests exist to validate how the `screenStructureManager` determines and updates the screen structure. Therefore, you can encapsulate any supplementary logic in functions with a well-defined interface. Subsequently, you'll reduce the lines of code in your test file and its readability. The DRY principle plays a big role both in your application's code and its tests in order to avoid repeating yourself.
 
 Want to improve it even further? Decouple loading a JSON from this test case, make it as pure as possible and then you can freely reuse it across your tests' codebase.
 
@@ -134,9 +132,7 @@ Tests' code quality must be as high as in your application as you'll be spending
 
 For further reading, [Paul](https://twitter.com/twostraws) recommends ["XUnit Test Patterns: Refactoring Test Code"](http://xunitpatterns.com/) by Gerard Meszaros.
 
-Because without them this wouldn't be possible, a huge shoutout to [José Figueiredo](https://twitter.com/ZeMiguelFig), [Paul Hudson](https://twitter.com/twostraws), [Rodrigo López-Romero](https://twitter.com/rlrg_6) and [Tiago Martinho](https://twitter.com/martinho_t) for joining me. 🙌
-
-I would also like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Heitor Ferreira](https://www.linkedin.com/in/heitormpf) and [Tiago Silva](https://twitter.com/tiagomssilvaa) for their outstanding support and [João Pereira](https://twitter.com/NSMyself) for giving the "Let's Talk About" original idea. ❤️
+ Huge shoutout to [José Figueiredo](https://twitter.com/ZeMiguelFig), [Paul Hudson](https://twitter.com/twostraws), [Rodrigo López-Romero](https://twitter.com/rlrg_6) and [Tiago Martinho](https://twitter.com/martinho_t) for joining me. I would also like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Heitor Ferreira](https://www.linkedin.com/in/heitormpf) and [Tiago Silva](https://twitter.com/tiagomssilvaa) for their outstanding support and [João Pereira](https://twitter.com/NSMyself) for giving the "Let's Talk About" original idea. ❤️
 
 Last but not least, if you have any subject you would like to see covered and/or discussed, let me know here or on [Twitter](https://twitter.com/pedrommcarrasco)! 👀
 
