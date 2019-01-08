@@ -138,6 +138,6 @@ Because without them this wouldn't be possible, a huge shoutout to [José Figuei
 
 I would also like to praise [Ana Filipa Ferreira](https://twitter.com/anafpf3), [Heitor Ferreira](https://www.linkedin.com/in/heitormpf) and [Tiago Silva](https://twitter.com/tiagomssilvaa) for their outstanding support and [João Pereira](https://twitter.com/NSMyself) for giving the "Let's Talk About" original idea. ❤️
 
-Last but not least, if you have any subject you would like to see covered and/or discuss, let me know here or on [Twitter](https://twitter.com/pedrommcarrasco)! :eyes:
+Last but not least, if you have any subject you would like to see covered and/or discussed, let me know here or on [Twitter](https://twitter.com/pedrommcarrasco)! :eyes:
 
 Thanks for reading. ✨
