@@ -1,5 +1,5 @@
 ---
-title: "Let's Talk About: Double Standards"
+title: "Let's Talk About Double Standards"
 image: /assets/posts/lets-talk-about-double-standards/banner.jpg
 categories:
 - Let's Talk About
