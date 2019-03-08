@@ -22,13 +22,15 @@ Screen Saver based on the animations presented during **Apple Special Event** (O
 ## Features
 
 * Doesn't require internet connection
-* Provides an *all animations* screensaver
 * Homebrew support
+* Light & Dark theme
+* Select which animations you want to see
+* Loop each animation how many times you want
+* Make the animations' order random
 
-### Upcoming
-
-* Provide a preferences menu to select which animations will be displayed
-* Custom clock
+<p align="center">
+    <img src="https://github.com/pedrommcarrasco/Brooklyn/blob/master/Design/preferenceMenu.png?raw=true" alt="Example"/>
+</p>
 
 ## Installation
 
@@ -36,8 +38,13 @@ Independently of how you install **Brooklyn**, please **close your System Prefer
 
 ### Manual
 
-1. [Click here to Download](https://github.com/pedrommcarrasco/Brooklyn/releases/download/1.0.0/Brooklyn.saver.zip)
+1. [Click here to Download](https://github.com/pedrommcarrasco/Brooklyn/releases/download/2.0.1/Brooklyn.saver.zip)
 2. Open **Brooklyn.saver** (double click)
+3. `"Brooklyn.saver" can't be opened because it is from an unidentified developer` will appear, press `OK`
+4. Open Preferences
+5. Select Security & Privacy
+6. Select `General`
+7. On the bottom side, select `Open Anyway`
 
 ### Homebrew
 
@@ -75,5 +82,3 @@ Independently of how you install **Brooklyn**, please **close your System Prefer
 * Daily & Weekly Trending on [GitHub](https://github.com/trending/swift?since=daily) on multiple occasions
 
 * Top 1 in Monthly Trending on [GitHub](https://github.com/trending/swift?since=monthly)
-
-  
