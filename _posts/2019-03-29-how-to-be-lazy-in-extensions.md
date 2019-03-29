@@ -1,6 +1,7 @@
 ---
 title: "How To Be Lazy In Extensions?"
-image: /assets/posts/how-to-be-lazy-in-extensions/banner.jpg
+image: /assets/posts/how-to-be-lazy-in-extensions/banner.png
+
 categories:
 - how to
 tags:
