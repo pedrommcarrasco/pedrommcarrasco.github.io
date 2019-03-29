@@ -100,7 +100,7 @@
 
   .entry-content {
     @include breakpoint($medium) {
-      width: span(11 of 16);
+      width: span(16 of 16);
     }
 
     /* remove space after last child element */
