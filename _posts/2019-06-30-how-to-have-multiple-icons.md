@@ -34,7 +34,7 @@ Now, open your `Info.plist` as [source code](https://github.com/pedrommcarrasco/
 
 In case you didn't notice, you must omit the file extension and the scaling suffix (@2x and @3x) from each entry. 
 
-Once you're done, you can freely change your application's icon by calling [setAlternateIconName(_:completionHandler:)](https://developer.apple.com/reference/uikit/uiapplication/2806818-setalternateiconname)` like follows:
+Once you're done, you can freely change your application's icon by calling `[setAlternateIconName(_:completionHandler:)](https://developer.apple.com/reference/uikit/uiapplication/2806818-setalternateiconname)` like follows:
 
 <script src="https://gist.github.com/pedrommcarrasco/dabebe009c6738a6cb6c0ae774a6ef13.js"></script>
 
