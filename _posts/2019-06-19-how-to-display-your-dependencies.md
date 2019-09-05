@@ -22,13 +22,11 @@ Since I was using [CocoaPods]([https://cocoapods.org](https://cocoapods.org/)) t
 
 While I've never heard of it before, there was a clear and "official" solution. It was the plugin [`cocoapods-acknowledgements`](https://github.com/CocoaPods/cocoapods-acknowledgements).
 
-Turns out I didn't need to reinvent the wheel with a script because CocoaPods has an "official" solution for this specific problem called  [`cocoapods-acknowledgements`](https://github.com/CocoaPods/cocoapods-acknowledgements). 
-
 This plugin generates a property list (`.plist`) with the metadata of your dependencies. In order to use it, follow the next steps:
 
 1. Install it via ruby with  `gem install cocoapods-acknowledgements`
 2. Add `plugin 'cocoapods-acknowledgements'` to your `podfile`.
-3. You'll now find `Pods-CocoaHub-metadata.plist` inside `Pods/`
+3. You'll now find `Pods-YOUR_TARGET-metadata.plist` inside `Pods/`
 
 With this property list you can either decode it with the following code and map/transform to your own user interface:
 
