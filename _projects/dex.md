@@ -1,5 +1,5 @@
 ---
-title: "CocoaHub"
+title: "Dex"
 image: 
   path: /assets/projects/dex/cover.jpeg
   thumbnail: /assets/projects/dex/logo.jpg

@@ -11,8 +11,6 @@ Working at Farfetch means joining a global community of over 2200 people, inspir
 
 Farfetch has 13 offices across the world: Braga, Dubai, Guimarães, Hong Kong, L.A., Lisbon, London, Moscow, New York, Porto, Shanghai, São Paulo and Tokyo.
 
-Currently, I'm working at Farfetch in their main application internally called Discover.
-
 ## Discover
 
 ![](https://github.com/pedrommcarrasco/pedrommcarrasco.github.io/blob/master/assets/experience/farfetch/discover_cover.jpg?raw=true)
@@ -34,4 +32,5 @@ Discover, how Farfetch's main application is called internally, is a full ecomme
 
 * Snapshot Testing
 
+* Server-Driven UI
   
