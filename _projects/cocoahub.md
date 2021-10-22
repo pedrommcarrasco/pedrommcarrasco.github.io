@@ -8,7 +8,7 @@ actions:
 comments: false
 ---
 
-Events, news and articles related to Apple's programming ecosystem in the palm of your hand - download it [here](https://apps.apple.com/us/app/cocoahub/id1467755462).
+Events, news and articles related to Apple's programming ecosystem in the palm of your hand. It's available on Apple's App Store and you can get it [here](https://apps.apple.com/us/app/cocoahub/id1467755462).
 
 It's hard to stay updated with all that is happening inside Apple's programming ecosystem. CocoaHub helps you by sharing a curated selection of Apple official announcements, updates to the Swift language, new episodes from your favourite podcasts, new issues from your favourite newsletters, community initiatives, conferences happening around the world, fantastic articles, and much more!
 
